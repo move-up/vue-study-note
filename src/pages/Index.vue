@@ -1,6 +1,6 @@
 <template>
-  <div class="page-index">这是index页面
-
+  <div class="page-index">
+    这是index页面
   </div>
 </template>
 
