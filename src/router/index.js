@@ -22,6 +22,6 @@ const router =  new Router({
 
 export default router
 
-/*router.beforeEach((to,from,next) =>{
+/*router.beforeEach((to,from,next) =>{ //路由跳转之前的拦截 to:将要跳转去的route; from:从改route跳转；next: 继续跳转
   console.log(to)
 })*/
