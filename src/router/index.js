@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Index from '@/pages/Index'
 import Login from '@/pages/Login'
+import Todolist from '@/pages/Todolist'
 
 Vue.use(Router)
 
@@ -16,6 +17,11 @@ const router =  new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/todolist',
+      name: 'Todolist',
+      component: Todolist
     }
   ]
 })
