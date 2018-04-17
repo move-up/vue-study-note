@@ -19,12 +19,6 @@
 
 <script>
   export default {
-    name: '',
-    components: {
-
-    },
-    props: {
-    },
     data () {
       return {
         items: [
@@ -38,18 +32,6 @@
           }
         ],
       }
-    },
-    computed: {
-
-    },
-    watch: {
-
-    },
-    created () {
-
-    },
-    mounted () {
-
     },
     methods: {
 
