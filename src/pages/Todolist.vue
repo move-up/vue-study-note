@@ -35,6 +35,7 @@
   export default {
     data () {
       return {
+        newItem: '',
         items: [
           {
             label: 'Foo',
@@ -50,11 +51,17 @@
     methods: {
 
       addNewItem: function() {
-          this.items.push({
-            label: this.newItem,
-            isFinished: false
-          })
-          this.newItem = ''
+        if (!this.newItem.length) {
+          alert('不能添加空项目!')
+          return
+        }
+
+        this.items.push({
+          label: this.newItem,
+          isFinished: false
+        })
+
+        this.newItem = ''
       },
 
       deleteOne: function(index){

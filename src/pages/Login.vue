@@ -1,17 +1,14 @@
 <template>
   <div class="page-login">
-    <form action="">
-      <div class="form-group">
-        <input class="form-control" type="text" name="username" placeholder="用户名">
-      </div>
-      <div class="form-group">
-        <input class="form-control" type="password" name="pwd" placeholder="密码">
-      </div>
-      <div class="form-group">
-        <button @link="handleLongin">登录</button>
-      </div>
-    </form>
-
+    <el-form ref="form" :model="form" label-width="80px">
+      <el-form-item label="用户名">
+        <el-input v-model="user.name" placeholder="请输入用户名"></el-input>
+      </el-form-item>
+      <el-form-item label="密码">
+        <el-input v-model="user.pw" placeholder="请输入密码"></el-input>
+      </el-form-item>
+      <el-button>登录</el-button>
+    </el-form>
   </div>
 </template>
 
@@ -25,40 +22,13 @@
     },
     data () {
       return {
+        user: {
+          name: '',
+          pw: ''
+        }
       }
     },
     methods: {
-
-      addNewItem: function() {
-          this.items.push({
-            label: this.newItem,
-            isFinished: false
-          })
-          this.newItem = ''
-      },
-
-      deleteOne: function(index){
-
-        var r = confirm("确定删除？")
-        if(r === true){
-          this.items.pop(index,1)
-        } else {
-
-        }
-
-      },
-
-      deleteAll: function(index){
-
-        var r = confirm("确定删除？")
-        if(r === true){
-          this.items = []
-        } else {
-
-        }
-
-      }
-
     }
   }
 </script>
