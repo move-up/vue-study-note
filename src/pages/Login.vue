@@ -1,6 +1,6 @@
 <template>
   <div class="page-login">
-    <!--<form action="">
+    <form action="">
       <div class="form-group">
         <input class="form-control" type="text" name="username" placeholder="用户名">
       </div>
@@ -10,7 +10,7 @@
       <div class="form-group">
         <button @link="handleLongin">登录</button>
       </div>
-    </form>-->
+    </form>
 
   </div>
 </template>
