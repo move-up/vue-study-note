@@ -1,19 +1,43 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Index from '@/pages/Index'
-import Login from '@/pages/Login'
-import Todolist from '@/pages/Todolist'
+/* import Index from '@/pages/home/index'
+import Login from '@/pages/login/index'
+import Todolist from '@/pages/Todolist' */
+import store from '@/store/index'
+
+
+import Layout from '@/components/Layout'
 
 Vue.use(Router)
 
 const router =  new Router({
   routes: [
     {
-      path: '/',
-      name: 'Index',
-      component: Index
+      path: '',
+      component: Layout,
+      redirect: 'home',
+      children: [{
+        path: 'home',
+        component: () => import('@/pages/home/index'),
+        name: 'home',
+        meta: { title: 'home', icon: 'home', noCache: true }
+      }]
     },
+    //登录
     {
+      path: '/login',
+      name: 'login',
+      component: () => import('@/pages/login/index')
+
+    },
+    //todolist
+    {
+      path: '/todolist',
+      name: 'todolist',
+      component: () => import('@/pages/todolist/index')
+
+    }
+    /* {
       path: '/login',
       name: 'Login',
       component: Login
@@ -22,8 +46,19 @@ const router =  new Router({
       path: '/todolist',
       name: 'Todolist',
       component: Todolist
-    }
+    } */
   ]
+})
+
+// 路由拦截
+router.beforeEach(({ meta, path, name }, from, next) => {
+  var { auth = true } = meta
+  var isLogin = Boolean(store.state['user']['name']) //true用户已登录， false用户未登录
+
+  if (auth && !isLogin && path !== '/login') {
+    return next({ path: '/login' })
+  }
+  next()
 })
 
 export default router
