@@ -67,7 +67,7 @@
 				this.$refs['form'].validate((valid) => {
           if (valid) {
             this.USER_SIGNIN(this.user)
-            this.$router.replace({ path: '/todolist' })
+            this.$router.replace({ path: '/home' })
           } else {
             this.$message.error('用户名或密码错误！');
             return false;
