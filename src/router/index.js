@@ -30,7 +30,7 @@ const router =  new Router({
       path: '/login',
       name: 'login',
       component: resolve => { require(['@/pages/login/index'], resolve) },
-      //component: () => import('@/pages/login/index'),//用这种办法要去改config下面assetsPublicPath: '/vue-study-note/dist/'
+      //component: () => import('@/pages/login/index'),//用这种办法要去改config下面assetsPublicPath: '/vue-study-note/dist'
 
     },
     //todolist
