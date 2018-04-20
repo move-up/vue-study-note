@@ -12,13 +12,15 @@ Vue.use(Router)
 
 const router =  new Router({
   routes: [
+    //懒加载路由
+    //首页
     {
-      path: '',
+      path: '/',
       component: Layout,
-      redirect: 'home',
+      redirect: '/home',
       children: [{
-        path: 'home',
-        component: () => import('@/pages/home/index'),
+        path: '/home',
+        component: resolve => { require(['@/pages/home/index'], resolve) },
         name: 'home',
         meta: { title: 'home', icon: 'home', noCache: true }
       }]
@@ -27,16 +29,17 @@ const router =  new Router({
     {
       path: '/login',
       name: 'login',
-      component: () => import('@/pages/login/index')
+      component: resolve => { require(['@/pages/login/index'], resolve) },
+      //component: () => import('@/pages/login/index'),//用这种办法要去改config下面assetsPublicPath: '/vue-study-note/dist/'
 
     },
     //todolist
     {
       path: '/todolist',
       name: 'todolist',
-      component: () => import('@/pages/todolist/index')
+      component: resolve => { require(['@/pages/todolist/index'], resolve) },
 
-    }
+    },
     /* {
       path: '/login',
       name: 'Login',
