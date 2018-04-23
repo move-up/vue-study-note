@@ -21,7 +21,8 @@
 
 <script>
   import { mapActions } from 'vuex'
-  import { USER_SIGNIN } from '@/store/user'
+  import { USER_SIGNIN } from '@/store/modules/user'
+  import Cookies from 'js-cookie'
 
   export default {
     name: '',
@@ -80,7 +81,7 @@
 
 <style lang="scss">
   .c-login {
-    margin: 0 auto;
+    margin: 150px auto;
     width: 480px;
   }
 </style>
