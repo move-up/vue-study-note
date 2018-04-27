@@ -3,11 +3,17 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
 import store from '@/store/index'
 
-Vue.use(ElementUI)
+import Element from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css';
+
+//import ECharts from 'vue-echarts/components/ECharts'
+
+Vue.use(Element)
+
+//Vue.component('chart', ECharts)
+
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

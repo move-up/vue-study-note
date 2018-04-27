@@ -4,7 +4,7 @@
       <div slot="header" class="clearfix">
         <span>登录</span>
       </div>
-      <el-form ref="form" :rules="rules" :model="user" label-width="80px">
+      <el-form ref="form" @submit.native.prevent @keyup.enter="handleLogin" :rules="rules" :model="user" label-width="80px">
         <el-form-item label="用户名" prop="name">
           <el-input v-model="user.name" placeholder="请输入用户名"></el-input>
         </el-form-item>
@@ -12,7 +12,7 @@
           <el-input type="password" v-model="user.pw" placeholder="请输入密码"></el-input>
         </el-form-item>
         <div class="clearfix">
-          <el-button class="f-r" @click="handleLogin">登录</el-button>
+          <el-button class="f-r" native-type='submit' @click="handleLogin">登录</el-button>
         </div>
       </el-form>
     </el-card>
@@ -67,8 +67,9 @@
 			handleLogin () {
 				this.$refs['form'].validate((valid) => {
           if (valid) {
-            this.USER_SIGNIN(this.user)
-            this.$router.replace({ path: '/home' })
+            this.USER_SIGNIN(this.user['name']).then(() => {
+              this.$router.push({ path: '/home' })
+            })
           } else {
             this.$message.error('用户名或密码错误！');
             return false;
@@ -81,7 +82,15 @@
 
 <style lang="scss">
   .c-login {
-    margin: 150px auto;
+    margin: 250px 0;
+    margin-right: 40px;
     width: 480px;
+    height: 264px;
+  }
+
+  .page-login {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 </style>
