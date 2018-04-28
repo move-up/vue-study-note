@@ -23,6 +23,7 @@
   import { mapActions } from 'vuex'
   import { USER_SIGNIN } from '@/store/modules/user'
   import Cookies from 'js-cookie'
+  import { Loading } from 'element-ui';
 
   export default {
     name: '',
@@ -68,14 +69,16 @@
 				this.$refs['form'].validate((valid) => {
           if (valid) {
             this.USER_SIGNIN(this.user['name']).then(() => {
-              this.$router.push({ path: '/home' })
+              //Loading.service(options);
+              this.$router.push({ path: '/home' });
+              this.$message.success('登录成功！')
             })
           } else {
             this.$message.error('用户名或密码错误！');
             return false;
           }
         });
-			}
+      }
     }
   }
 </script>

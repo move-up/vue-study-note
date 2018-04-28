@@ -26,14 +26,17 @@
         </div>
       </div>
     </div>
+
+      <Add></Add>
   </div>
 </template>
 
 <script>
+import Add from './add'
   export default {
     name: '',
     components: {
-
+      Add
     },
     props: {
     },

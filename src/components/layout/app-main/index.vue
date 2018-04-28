@@ -1,6 +1,7 @@
 <!-- app-main -->
 <template>
   <div class='app-main'>
+
     <!-- content -->
     <transition
       name="fade" mode="out-in">

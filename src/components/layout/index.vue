@@ -1,11 +1,17 @@
 <!-- layout -->
 <template>
   <div class='layout'>
-    <sidebar class="sidebar-container"></sidebar>
     <div class="main-container">
       <navbar></navbar>
-      <tags-view></tags-view>
-      <app-main></app-main>
+      <el-container style="height:900px;">
+        <el-aside width="200px">
+          <sidebar class="sidebar-container"></sidebar>
+        </el-aside>
+        <el-main>
+          <tags-view></tags-view>
+          <app-main></app-main>
+        </el-main>
+      </el-container>
     </div>
   </div>
 </template>
@@ -46,4 +52,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.el-menu-item {
+  background-color: #000;
+}
 </style>
