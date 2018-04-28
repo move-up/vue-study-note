@@ -57,8 +57,11 @@ const router =  new Router({
 // 路由拦截
 router.beforeEach(({ meta, path, name }, from, next) => {
   var { auth = true } = meta
-  var isLogin = Boolean(store.state['user']['name']) //true用户已登录， false用户未登录
-
+  //var auth = meta.auth === undefined ? true : meta.auth;
+  var isLogin = store.state['user']['isLogin'] //true用户已登录， false用户未登录
+  if (isLogin && path === '/login') {
+    return next({ path: '/' })
+  }
   if (auth && !isLogin && path !== '/login') {
     return next({ path: '/login' })
   }
@@ -67,6 +70,6 @@ router.beforeEach(({ meta, path, name }, from, next) => {
 
 export default router
 
-/*router.beforeEach((to,from,next) =>{ //路由跳转之前的拦截 to:将要跳转去的route; from:从改route跳转；next: 继续跳转
+/*router.beforeEach((to,from,next) =>{ //路由跳转之前的拦截 to:将要跳转去的route; from:从该route跳转；next: 继续跳转
   console.log(to)
 })*/
