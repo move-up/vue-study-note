@@ -10,27 +10,16 @@
       <p>Original message: "{{ message }}"</p>
       <p>Computed reversed message: "{{ reversedMessage }}"</p>
     </div>
-
-    <el-table
-      :data="data1"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
-    </el-table>
   </div>
 </template>
+  <template v-if="loginType === 'username'">
+    <label>Username</label>
+    <input placeholder="Enter your username">
+  </template>
+  <template v-else>
+    <label>Email</label>
+    <input placeholder="Enter your email address">
+  </template>
 
 <script>
   export default {
@@ -50,29 +39,7 @@
         lastName: 'Bar',
         fullName: 'Foo Bar',
         message: 'Hello',
-        dynamicId: 'num1',
-        data1:[
-          {
-            data: '2018-12-15',
-            name:'王小明',
-            address: '北京市朝阳区芍药居'
-          },
-          {
-            data: '2018-12-15',
-            name:'张晓峰',
-            address: '上海市浦东新区世纪大道'
-          },
-          {
-            data: '2018-12-15',
-            name:'李小刚',
-            address: '北京市海淀区西二旗'
-          },
-          {
-            data: '2018-12-15',
-            name:'周小伟',
-            address: '深圳市南山区深南大道'
-          }
-        ],
+        n: 0
       }
     },
     computed: {
