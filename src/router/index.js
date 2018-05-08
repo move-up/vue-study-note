@@ -7,25 +7,13 @@ import store from '@/store/index'
 import Cookies from 'js-cookie'
 
 
+
 import Layout from '@/components/Layout'
+import Main from '@/components/main'
 
 Vue.use(Router)
 
-const router =  new Router({
-  routes: [
-    //懒加载路由
-    //首页
-    {
-      path: '/',
-      component: Layout,
-      redirect: '/home',
-      children: [{
-        path: '/home',
-        component: resolve => { require(['@/pages/home/index'], resolve) },
-        name: 'home',
-        meta: { title: 'home', icon: 'home', noCache: true }
-      }]
-    },
+const defaultRouter = [
     //登录
     {
       path: '/login',
@@ -33,25 +21,79 @@ const router =  new Router({
       component: resolve => { require(['@/pages/login/index'], resolve) },
       //component: () => import('@/pages/login/index'),//用这种办法要去改config下面assetsPublicPath: '/vue-study-note/dist'
 
-    },
-    //todolist
-    {
-      path: '/todolist',
-      name: 'todolist',
-      component: resolve => { require(['@/pages/todolist/index'], resolve) },
+    }
+]
 
-    },
-    /* {
-      path: '/login',
-      name: 'Login',
-      component: Login
+const menuRouter = [
+  //懒加载路由
+  //首页
+  // {
+  //   path: '/',
+  //   component: Layout,
+  //   redirect: '/home',
+  //   children: [{
+  //     path: '/home',
+  //     component: resolve => { require(['@/pages/home/index'], resolve) },
+  //     name: 'home',
+  //     meta: { title: 'home', icon: 'home', noCache: true }
+  //   }]
+  // },
+  {
+    path: '/',
+    component: Main,
+    redirect: '/userCenter/index',
+    title: '用户中心',
+    children: [{
+      path: '/userCenter/index',
+      component: resolve => { require(['@/pages/userCenter/index'], resolve) },
+      name: 'userCenter',
+      meta: { title: '个人信息', icon: 'home', noCache: true }
     },
     {
-      path: '/todolist',
-      name: 'Todolist',
-      component: Todolist
-    } */
-  ]
+      path: '/userCenter/changepw',
+      component: resolve => { require(['@/pages/userCenter/changepw'], resolve) },
+      name: 'changepw',
+      meta: { title: '修改密码', icon: 'home', noCache: true }
+    }]
+  },
+  {
+    path: '/detail',
+    component: Main,
+    title: '商品详情',
+    children: [{
+      path: '/detail/fruit',
+      component: resolve => { require(['@/pages/detail/fruit'], resolve) },
+      name: 'fruit',
+      meta: { title: '水果', icon: 'home', noCache: true }
+    },
+    {
+      path: '/detail/vegetable',
+      component: resolve => { require(['@/pages/detail/vegetable'], resolve) },
+      name: 'vegetable',
+      meta: { title: '蔬菜', icon: 'home', noCache: true }
+    }]
+  },
+  //todolist
+  {
+    path: '/todolist',
+    name: 'todolist',
+    component: resolve => { require(['@/pages/todolist/index'], resolve) },
+
+  },
+  /* {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/todolist',
+    name: 'Todolist',
+    component: Todolist
+  } */
+]
+
+const router =  new Router({
+  routes: [...defaultRouter, ...menuRouter]
 })
 
 // 路由拦截
