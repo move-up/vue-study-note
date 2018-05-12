@@ -23,7 +23,7 @@
   import { mapActions } from 'vuex'
   import { USER_SIGNIN } from '@/store/modules/user'
   import Cookies from 'js-cookie'
-  import { Loading } from 'element-ui';
+  import { Loading } from 'element-ui'
 
   export default {
     name: '',
@@ -57,8 +57,8 @@
     watch: {
 
     },
+    /* vue实例刚刚创建的一瞬间触发 */
     created () {
-
     },
     mounted () {
 
@@ -70,7 +70,7 @@
           if (valid) {
             this.USER_SIGNIN(this.user['name']).then(() => {
               //Loading.service(options);
-              this.$router.push({ path: '/home' });
+              this.$router.push({ path: '/' });
               this.$message.success('登录成功！')
             })
           } else {

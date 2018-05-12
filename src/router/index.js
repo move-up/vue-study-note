@@ -1,9 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-/* import Index from '@/pages/home/index'
-import Login from '@/pages/login/index'
-import Todolist from '@/pages/Todolist' */
-import store from '@/store/index'
+import store from '@/store/index'//全局状态管理
 import Cookies from 'js-cookie'
 
 
@@ -80,16 +77,6 @@ const menuRouter = [
     component: resolve => { require(['@/pages/todolist/index'], resolve) },
 
   },
-  /* {
-    path: '/login',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/todolist',
-    name: 'Todolist',
-    component: Todolist
-  } */
 ]
 
 const router =  new Router({

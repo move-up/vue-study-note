@@ -6,12 +6,12 @@
       <input type="number" v-model="c">= <span>{{ total }}</span>
       <!-- <span>{{ total }}</span> -->
     </div>
-    <div id="DEMO2">
+    <div ref="demo2" id="DEMO2">
       <p>Original message: "{{ message }}"</p>
       <p>Computed reversed message: "{{ reversedMessage }}"</p>
     </div>
 
-    <el-table
+    <el-table ref="table"
       :data="data1"
       style="width: 100%">
       <el-table-column
@@ -109,7 +109,7 @@
 
     },
     mounted () {
-
+      console.log(this.$refs['demo2'])
     },
     methods: {
 
