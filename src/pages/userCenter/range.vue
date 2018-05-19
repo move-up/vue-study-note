@@ -1,6 +1,6 @@
 <!--  -->
 <template>
-  <input type="text" v-model="value"
+  <input type="text" v-model="_value"
   :max="max"
   :min="min">
 </template>
@@ -8,6 +8,11 @@
 <script>
 export default {
   name: 'range',
+
+  model: {
+    prop: '_value',
+    event: 'change'
+  },
 
   components: {},
 
@@ -31,7 +36,16 @@ export default {
     }
   },
 
-  computed: {},
+  computed: {
+    _value: {
+      get () {
+        return this.value
+      },
+      set (value) {
+        this.$emit('change', value)
+      }
+    }
+  },
 
   watch: {},
 
@@ -39,7 +53,8 @@ export default {
 
   mounted () {},
 
-  methods: {}
+  methods: {
+  }
 }
 </script>
 

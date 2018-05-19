@@ -11,7 +11,7 @@
     <range
       :max="rg.max"
       :min="rg.min"
-      :value="rg.value"></range>
+      v-model="rg.value"></range>
   </div>
 </template>
 
@@ -32,9 +32,9 @@ export default {
   data () {
     return {
       rg: {
-        max: '100',
-        min: '0',
-        value: '10'
+        max: 100,
+        min: 0,
+        value: 10
       },
       btn: {
         title: '点击触发',
