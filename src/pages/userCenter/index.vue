@@ -2,7 +2,7 @@
 <template>
   <div class='' ref="div">
     个人中心
-    <el-table ref="table"></el-table>
+    <!-- <el-table ref="table"></el-table> -->
         <my-button
           :disabled="btn.disabled"
           :title="btn.title">
@@ -11,13 +11,25 @@
     <range
       :max="rg.max"
       :min="rg.min"
-      v-model="rg.value"></range>
+      v-model="rg.value"
+      :msg="msg"
+      @showbox="toshow"></range>
+      <!-- <range :text="'创业项目名称'" v-model="rg.value"></range> -->
+      <girl-group
+      :girls="b.girls"
+      :noticeGirl="b.noticeGirl"
+      @introudce="introudceSelf"></girl-group>
+      <p>群消息girl：{{ noticeGirl }}</p>
+      <div>
+        {{ somebody }} 说：我 {{ age }} 了。
+      </div>
   </div>
 </template>
 
 <script>
 import MyButton from './button'
 import Range from './range'
+import GirlGroup from './girl-group'
 
 export default {
   name: 'usercenter',
@@ -25,6 +37,7 @@ export default {
   components: {
     MyButton,
     Range,
+    GirlGroup
   },
 
   props: {},
@@ -34,12 +47,33 @@ export default {
       rg: {
         max: 100,
         min: 0,
-        value: 10
+        value: 10,
+        projectN:'',
       },
       btn: {
         title: '点击触发',
         disabled: false,
       },
+      msg: 'ureow',
+      b: {
+        girls: [
+          {
+            name: 'xiao li',
+            age: 18
+          },
+          {
+            name: 'xiao kai',
+            age: 16
+          },
+          {
+            name: 'xiao aa',
+            age: 24
+          }
+        ]
+      },
+      noticeGirl: '',
+      somebody: '',
+      age: '',
     }
   },
 
@@ -57,7 +91,17 @@ export default {
     // this.$refs['xxx']或this.$refs.xxx
   },
 
-  methods: {}
+  methods: {
+    toshow (msg) {
+      this.msg = msg;
+    },
+
+    introudceSelf(opt) {
+      this.somebody = opt.name;
+      this.age = opt.age;
+      this.noticeGirl = opt.name + '，已收到消息';
+    }
+  }
 }
 </script>
 

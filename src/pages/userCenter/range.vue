@@ -1,8 +1,24 @@
 <!--  -->
 <template>
+<div>
   <input type="text" v-model="_value"
   :max="max"
   :min="min">
+  <div
+  @click="open"
+  class="open-box">{{ msg }}</div>
+</div>
+
+<!-- <p class="completion-input-box">
+  <span class="input-box-name">{{text}}</span>
+  <input
+  type="text"
+  ref="input"
+  v-model="_value"
+  :value="value"
+  @input="$emit('input', $event.target.value)">
+</p> -->
+
 </template>
 
 <script>
@@ -15,7 +31,8 @@ export default {
   },
 
   components: {},
-
+  /* props: ['text','value'],
+ */
   props: {
     max: {
       type: Number,
@@ -28,7 +45,8 @@ export default {
     value: {
       type: Number,
       default(){ return 4; }
-    }
+    },
+    msg: String,
   },
 
   data () {
@@ -54,9 +72,16 @@ export default {
   mounted () {},
 
   methods: {
+    open() {
+      this.$emit('showbox','the msg');
+    }
   }
 }
 </script>
 
 <style lang='scss' scoped>
+.open-box {
+  min-height: 20px;
+  background-color: pink;
+}
 </style>
