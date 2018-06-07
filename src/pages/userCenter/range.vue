@@ -7,6 +7,8 @@
   <div
   @click="open"
   class="open-box">{{ msg }}</div>
+  <input type="text" v-model="username"
+  @change="setUser">
 </div>
 
 <!-- <p class="completion-input-box">
@@ -74,6 +76,9 @@ export default {
   methods: {
     open() {
       this.$emit('showbox','the msg');
+    },
+    setUser(){
+      this.$emit('transferUser', this.username)
     }
   }
 }

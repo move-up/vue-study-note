@@ -13,7 +13,9 @@
       :min="rg.min"
       v-model="rg.value"
       :msg="msg"
-      @showbox="toshow"></range>
+      @showbox="toshow"
+      @transferUser="getUser"></range>
+      <p>{{ rg.value }} 用户名为：{{ user }}</p>
       <!-- <range :text="'创业项目名称'" v-model="rg.value"></range> -->
       <girl-group
       :girls="b.girls"
@@ -100,6 +102,10 @@ export default {
       this.somebody = opt.name;
       this.age = opt.age;
       this.noticeGirl = opt.name + '，已收到消息';
+    },
+
+    getUser(msg) {
+      this.user = msg
     }
   }
 }
