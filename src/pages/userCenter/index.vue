@@ -76,6 +76,7 @@ export default {
       noticeGirl: '',
       somebody: '',
       age: '',
+      user: '',
     }
   },
 
