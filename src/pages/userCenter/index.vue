@@ -8,6 +8,8 @@
           :title="btn.title">
         </my-button>
     <h4>Range</h4>
+
+    <h2>组件Range：</h2>
     <range
       :max="rg.max"
       :min="rg.min"
@@ -17,6 +19,8 @@
       @transferUser="getUser"></range>
       <p>{{ rg.value }} 用户名为：{{ user }}</p>
       <!-- <range :text="'创业项目名称'" v-model="rg.value"></range> -->
+
+      <h2>组件GirlGroup：</h2>
       <girl-group
       :girls="b.girls"
       :noticeGirl="b.noticeGirl"
@@ -25,6 +29,17 @@
       <div>
         {{ somebody }} 说：我 {{ age }} 了。
       </div>
+
+      <h2>组件myCounter：</h2>
+      <my-counter :value="val"></my-counter>
+
+      <h2>组件InputBox：</h2>
+            <input-box
+            :label="rlabel"
+            v-model="rname"
+            v-on:focus.native="onFocus"
+            ></input-box>
+            <p>你输入的值：{{ rname }}</p>
   </div>
 </template>
 
@@ -32,6 +47,8 @@
 import MyButton from './button'
 import Range from './range'
 import GirlGroup from './girl-group'
+import MyCounter from './my-counter'
+import InputBox from './input-box'
 
 export default {
   name: 'usercenter',
@@ -39,13 +56,17 @@ export default {
   components: {
     MyButton,
     Range,
-    GirlGroup
+    GirlGroup,
+    MyCounter,
+    InputBox
   },
 
   props: {},
 
   data () {
     return {
+      rname: '',
+      rlabel: '',
       rg: {
         max: 100,
         min: 0,
@@ -77,6 +98,7 @@ export default {
       somebody: '',
       age: '',
       user: '',
+      val: 0,
     }
   },
 
