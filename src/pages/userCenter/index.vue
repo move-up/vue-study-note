@@ -34,12 +34,24 @@
       <my-counter :value="val"></my-counter>
 
       <h2>组件InputBox：</h2>
-            <input-box
-            :label="rlabel"
-            v-model="rname"
-            v-on:focus.native="onFocus"
-            ></input-box>
-            <p>你输入的值：{{ rname }}</p>
+        <input-box
+        :label="rlabel"
+        v-model="rname"
+        v-on:focus.native="onFocus"
+        ></input-box>
+        <p>你输入的值：{{ rname }}</p>
+
+
+      <h2>组件blog：</h2>
+        <div :style="{ fontSize: blogFontSize + 'em' }">
+            <blog
+            :title="bo.title"
+            :content="bo.content"
+            v-on:enlarge-text="onEnlargeText"
+            v-model="searchText"
+            :errorTipCon="bo.errorTipCon">
+            </blog>
+        </div>
   </div>
 </template>
 
@@ -49,6 +61,7 @@ import Range from './range'
 import GirlGroup from './girl-group'
 import MyCounter from './my-counter'
 import InputBox from './input-box'
+import Blog from './blog'
 
 export default {
   name: 'usercenter',
@@ -58,13 +71,20 @@ export default {
     Range,
     GirlGroup,
     MyCounter,
-    InputBox
+    InputBox,
+    Blog,
   },
-
-  props: {},
 
   data () {
     return {
+      bo: {
+        title: '五化',
+        errorTipCon: 'Something bad happened.',
+        content: '关于这次五化工作……………………'
+      },
+      blogFontSize: 1,
+      itemList: [],
+      searchText: '',
       rname: '',
       rlabel: '',
       rg: {
@@ -129,6 +149,10 @@ export default {
 
     getUser(msg) {
       this.user = msg
+    },
+
+    onEnlargeText:function (enlargeAmount) {
+      this.blogFontSize += enlargeAmount
     }
   }
 }
