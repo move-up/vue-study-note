@@ -24,10 +24,31 @@
               todolist
           </router-link>
         </div>
+        <div class="item">
+          <router-link to="/userCenter/index" title="五化首页">
+              <div class="date">
+                  <span>
+                    2018-06-28
+                  </span>
+              </div>
+              vue-wh五化实例
+          </router-link>
+        </div>
+        <div class="item">
+          <router-link to="/typeof" title="typeof">
+              <div class="date">
+                  <span>
+                    2018-06-28
+                  </span>
+              </div>
+              判断数据类型
+          </router-link>
+        </div>
       </div>
     </div>
 
-      <Add></Add>
+    <!-- 计算器实例 -->
+    <!-- <Add></Add> -->
   </div>
 </template>
 

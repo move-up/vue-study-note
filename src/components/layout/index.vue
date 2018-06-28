@@ -8,7 +8,7 @@
           <sidebar class="sidebar-container"></sidebar>
         </el-aside>
         <el-main>
-          <tags-view></tags-view>
+          <!-- <tags-view></tags-view> -->
           <app-main></app-main>
         </el-main>
       </el-container>

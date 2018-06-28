@@ -24,19 +24,25 @@ const defaultRouter = [
 const menuRouter = [
   //懒加载路由
   //首页
-  // {
-  //   path: '/',
-  //   component: Layout,
-  //   redirect: '/home',
-  //   children: [{
-  //     path: '/home',
-  //     component: resolve => { require(['@/pages/home/index'], resolve) },
-  //     name: 'home',
-  //     meta: { title: 'home', icon: 'home', noCache: true }
-  //   }]
-  // },
   {
     path: '/',
+    component: Layout,
+    redirect: '/home',
+    children: [{
+      path: '/home',
+      component: resolve => { require(['@/pages/home/index'], resolve) },
+      name: 'home',
+      meta: { title: 'home', icon: 'home', noCache: true }
+    },
+    {
+      path: '/typeof',
+      component: resolve => { require(['@/pages/typeof/index'], resolve) },
+      name: 'typeof',
+      //meta: { title: 'typeof', icon: 'typeof', noCache: true }
+    },]
+  },
+  {
+    path: '/userCenter/index',
     component: Main,
     redirect: '/userCenter/index',
     title: '用户中心',

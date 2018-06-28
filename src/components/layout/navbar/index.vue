@@ -1,6 +1,7 @@
 <!-- header -->
 <template>
   <el-menu class="layout-navbar" mode="horizontal">
+    <h1 class="left-menua">自主练习</h1>
     <div class="right-menu">
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">
@@ -66,6 +67,12 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.left-menua {
+  display: inline-block;
+  margin: 0px;
+  font-size: 25px;
+  padding-left: 10px;
+}
 .layout-navbar {
   height: 50px;
   line-height: 50px;
