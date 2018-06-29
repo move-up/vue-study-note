@@ -4,6 +4,8 @@
     <h1>判断数据类型</h1>
     <ul>
       <li>1.typeof</li>
+      <li>2.instanceof</li>
+      <li>3.toString.call(new RegExp)</li>
     </ul>
   </div>
 </template>
