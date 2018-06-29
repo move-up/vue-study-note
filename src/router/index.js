@@ -37,8 +37,17 @@ const menuRouter = [
     {
       path: '/typeof',
       component: resolve => { require(['@/pages/typeof/index'], resolve) },
-      name: 'typeof',
-      //meta: { title: 'typeof', icon: 'typeof', noCache: true }
+      name: 'typeof'
+    },
+    {
+      path: '/mock',
+      component: resolve => { require(['@/pages/mock/index'], resolve) },
+      name: 'typeof'
+    },
+    {
+      path: '/api',
+      component: resolve => { require(['@/pages/mock/api'], resolve) },
+      name: 'api'
     },]
   },
   {

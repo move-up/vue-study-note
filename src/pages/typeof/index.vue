@@ -42,6 +42,13 @@
         </ul>
       </li>
     </ul>
+    <div>
+      <h4>get和post区别：</h4>
+      <ul>
+        <li>get:会带参数</li>
+        <li>post:请求体</li>
+      </ul>
+    </div>
   </div>
 </template>
 

@@ -44,6 +44,26 @@
               判断数据类型
           </router-link>
         </div>
+        <div class="item">
+          <router-link to="/mock" title="mock">
+              <div class="date">
+                  <span>
+                    2018-06-28
+                  </span>
+              </div>
+              mock语法
+          </router-link>
+        </div>
+        <div class="item">
+          <router-link to="/api" title="api">
+              <div class="date">
+                  <span>
+                    2018-06-29
+                  </span>
+              </div>
+              api
+          </router-link>
+        </div>
       </div>
     </div>
 
