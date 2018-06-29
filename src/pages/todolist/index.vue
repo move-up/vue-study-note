@@ -1,5 +1,5 @@
 <template>
-  <div class="page-login">
+  <div class="">
 
     <div class="todolist">
       <input type="text" v-model="newItem">
@@ -151,11 +151,11 @@
 </script>
 
 <style>
-ul li {
-  color: #fff;
+/* ul li {
+  color: #333;
   font-size: 16px;
 }
 .c-white {
   color: #fff;
-}
+} */
 </style>
