@@ -44,8 +44,8 @@ export default {
   methods: {
     noticeGroup (name,age) {
       this.$emit('introudce',{
-        name: name,
-        age: age
+        name,
+        age
       })
     }
   }

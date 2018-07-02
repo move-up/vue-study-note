@@ -15,7 +15,7 @@ export default {
       [USER_SIGNIN](state, user) {
         state.userName = user
         state.isLogin = true
-        const expires = new Date(new Date().getTime() + 30 * 60 * 1000); // 过期时间30分钟
+        const expires = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000); // 过期时间7天
         Cookies.set('user', JSON.stringify(user), { expires })
       },
       [USER_SIGNOUT](state) {
