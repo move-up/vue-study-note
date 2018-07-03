@@ -48,6 +48,11 @@ const menuRouter = [
       path: '/api',
       component: resolve => { require(['@/pages/mock/api'], resolve) },
       name: 'api'
+    },
+    {
+      path: '/timer',
+      component: resolve => { require(['@/pages/timer/index'], resolve) },
+      name: 'timer'
     },]
   },
   {
