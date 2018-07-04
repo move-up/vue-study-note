@@ -39,9 +39,6 @@ export default {
 
   methods: {
     toggleShow () {
-      for (let i = 0; i < 1000000000; i++) {
-
-      }
       this.isShow = !this.isShow
       // this.isShow ? (this.isShow = false) : (this.isShow = true)
     },

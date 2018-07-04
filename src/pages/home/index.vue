@@ -64,6 +64,26 @@
               api
           </router-link>
         </div>
+        <div class="item">
+          <router-link to="/timer" title="timer">
+              <div class="date">
+                  <span>
+                    2018-07-03
+                  </span>
+              </div>
+              timer
+          </router-link>
+        </div>
+        <div class="item">
+          <router-link to="/render" title="render">
+              <div class="date">
+                  <span>
+                    2018-07-04
+                  </span>
+              </div>
+              render
+          </router-link>
+        </div>
       </div>
     </div>
 

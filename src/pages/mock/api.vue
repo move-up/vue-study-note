@@ -3,11 +3,9 @@
 <template>
   <div class='typeof'>
     <h1>请求数据</h1>
-    <div>https://www.easy-mock.com/mock/5b34eb92ebbfd9014ce9ece4/api/area2/list</div>
-
-    <div class="clearfix dc-box-red" v-for="(item,index) in friendsList" :key="index" >
-      <li>{{ item.id }} . {{ item.name }} - {{ item.age }} - {{ item.area }}</li>
-    </div>
+    <!-- <div class="clearfix dc-box-red text-center" v-for="(item,index) in friendsList" :key="index" >
+      <li>{{ item.id }} . {{ item.name }}   {{ item.age }}   {{ item.area }}</li>
+    </div> -->
 
     <el-table
       ref="table"
@@ -126,4 +124,13 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.text-center {
+  text-align: center;
+}
+li {
+  list-style: none;
+  width: 300px;
+  margin: 10px auto;
+  text-align: left;
+}
 </style>

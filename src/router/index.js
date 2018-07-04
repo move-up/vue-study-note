@@ -53,6 +53,11 @@ const menuRouter = [
       path: '/timer',
       component: resolve => { require(['@/pages/timer/index'], resolve) },
       name: 'timer'
+    },
+    {
+      path: '/render',
+      component: resolve => { require(['@/pages/render/index'], resolve) },
+      name: 'render'
     },]
   },
   {
