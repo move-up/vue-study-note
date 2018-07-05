@@ -76,7 +76,7 @@ export default {
 
   methods: {
     open() {
-      this.$emit('showbox','the msg');
+      this.$emit('showbox',this.username);
     },
     setUser(){
       this.$emit('transferUser', this.username)

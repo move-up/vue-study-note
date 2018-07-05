@@ -14,7 +14,7 @@
       :max="rg.max"
       :min="rg.min"
       v-model="rg.value"
-      :msg="msg"
+      :msg="user"
       @showbox="toshow"
       @transferUser="getUser"></range>
       <p>{{ rg.value }} 用户名为：{{ user }}</p>
@@ -97,7 +97,7 @@ export default {
         title: '点击触发',
         disabled: false,
       },
-      msg: 'ureow',
+      //msg: 'ureow',
       b: {
         girls: [
           {
