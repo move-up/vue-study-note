@@ -22,7 +22,6 @@ export default {
             on: {
               input: function(event){
                 self.value1 = event.target.value
-                //console.log(self.value1)
               }
             }
           }
@@ -38,16 +37,16 @@ export default {
               inputBtn: true
             },
             domProps: {
-              value2: self.value2
+              value2: this.value2
             },
             on: {
               input: function(event){
                 self.value2 = event.target.value
-                //console.log(self.value2)
               }
             }
           }
         ),
+        createElement('span', '结果：' + parseInt(self.value1) + '+' + parseInt(self.value2) + '=' + self.finalResult),
         createElement('span', '结果：' + parseInt(self.value1) + '+' + parseInt(self.value2) + '=' + `${parseInt(self.value1) + parseInt(self.value2)}`)
 
       ]
@@ -64,6 +63,9 @@ export default {
   },
 
   computed: {
+    finalResult () {
+      return parseInt(this.value1) + parseInt(this.value2)
+    }
   },
 
   watch: {},

@@ -1,7 +1,7 @@
 <!-- header -->
 <template>
   <el-menu class="layout-navbar" mode="horizontal">
-    <h1 class="left-menua">自主练习</h1>
+    <h1 class="left-menua">练习</h1>
     <div class="right-menu">
       <el-dropdown class="avatar-container right-menu-item" trigger="click">
         <div class="avatar-wrapper">

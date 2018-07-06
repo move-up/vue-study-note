@@ -23,7 +23,7 @@ export default {
  methods: {
   clickHandle() {
    // dosomething
-   console.log('你点击的按钮是：' + this.text)
+  //  console.log('你点击的按钮是：' + this.text)
   }
  },
  props: {
@@ -53,7 +53,7 @@ export default {
     text-align: center;
     box-sizing: border-box;
     outline: none;
-    margin: 0;
+    margin: 5px;
     transition: .1s;
     font-weight: 500;
     -moz-user-select: none;
