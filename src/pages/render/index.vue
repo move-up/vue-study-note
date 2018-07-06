@@ -1,10 +1,12 @@
 <!--  -->
 <template>
   <div class=''>
-    render计算器
-    <topTitle :level="1">Hello world!</topTitle>
-    <!-- <topTitle :level="2">Hello world!</topTitle>
-    <topTitle :level="3">Hello world!</topTitle> -->
+    render
+
+    <topTitle :level="4">加法计算器</topTitle>
+    <add></add>
+
+    <topTitle :level="4">分类按钮</topTitle>
     <selectBtn
     v-for="(btn, index) in testData"
     :type="btn.type"
@@ -13,6 +15,8 @@
     <selectBtn
     :type="btype"
     :text="btext">{{ btext }}</selectBtn>
+
+    <topTitle :level="4">输入框</topTitle>
     <input-render
     v-model="input.value"></input-render>{{ input.value }}
   </div>
@@ -25,6 +29,7 @@
 import topTitle from './topTitle'
 import selectBtn from './selectBtn'
 import inputRender from './inputRender'
+import add from './add'
 
 export default {
   name: '',
@@ -32,7 +37,8 @@ export default {
   components: {
     topTitle,
     selectBtn,
-    inputRender
+    inputRender,
+    add
   },
 
   props: {},
