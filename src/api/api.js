@@ -27,3 +27,12 @@ export const getTableListByPage = (params) => {
       .get("/table/pagelist", qs.stringify(params))
       .then(res => res.data)
 };
+
+export const getTableListPage = (params) => {
+  //params是参数对象，qs会对参数对象进行处理
+  return axios
+      .get("http://www.xg_wh.com/Home/Ceshi/get_films", { params })
+      .then(res => res.data)
+      // .get(`http://www.xg_wh.com/Home/Ceshi/get_films`)
+      // .then(res => res.data)
+};

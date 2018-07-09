@@ -58,7 +58,13 @@ const menuRouter = [
       path: '/render',
       component: resolve => { require(['@/pages/render/index'], resolve) },
       name: 'render'
-    },]
+    },
+    {
+      path: '/pagination',
+      component: resolve => { require(['@/pages/pagination/index'], resolve) },
+      name: 'pagination'
+    },
+  ]
   },
   {
     path: '/userCenter/index',
