@@ -24,11 +24,11 @@
     <!-- <slotRender><slot :text="message"></slot></slotRender> -->
 
     <top-title :level='4'>判断是否包含类名、添加和删除类</top-title>
-    <div class="demo c-white gray">aaa</div>
+    <div class="demo c-white gray" id="demo">aaa</div>
     <selectBtn
     :type="'success'"
     :text="btnText"
-    @click="demoFunction()">{{ btnText }}</selectBtn>
+    @click.native="demoFunction2">{{ btnText }}</selectBtn>
 
 
 
@@ -103,18 +103,44 @@ export default {
   },
 
   methods: {
+    demoFunction2 () {
+      const demo2 = document.getElementById('demo')
+      if(demo2.classList.contains('gray')) {
+        demo2.classList.remove('gray')
+        demo2.classList.add('pink')
+      } else {
+        demo2.classList.remove('pink')
+        demo2.classList.add('gray')
+      }
+    },
+
+    demoFunction (event) {
+      console.log(event)
+      // 获取dom节点
+      const demo = document.getElementById('demo')
+      // 判断是否存在class
+      if (this.hasClass(demo, 'gray')) {
+        this.removeClass(demo, 'gray')
+        this.addClass(demo, 'pink')
+      } else {
+        this.removeClass(demo, 'pink')
+        this.addClass(demo, 'gray')
+      }
+      // 切换class
+    },
+
     hasClass(elements, cName) {
       return !!elements.className.match(new RegExp( "(\\s|^)" + cName + "(\\s|$)"));
     },
 
     removeClass(elements, cName) {
-      if( hasClass(elements,cName) ){
+      if(this.hasClass(elements,cName)){
           elements.className = elements.className.replace(new RegExp( "(\\s|^)" + cName + "(\\s|$)" ), " ");
       };
     },
 
     addClass(elements, cName) {
-      if( !hasClass(elements,cName) ){
+      if(!this.hasClass(elements,cName)){
           elements.className += " " + cName;
       };
     }

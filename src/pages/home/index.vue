@@ -84,6 +84,16 @@
               render
           </router-link>
         </div>
+        <div class="item">
+          <router-link to="/pagination" title="pagination">
+              <div class="date">
+                  <span>
+                    2018-07-08
+                  </span>
+              </div>
+              pagination
+          </router-link>
+        </div>
       </div>
     </div>
 
