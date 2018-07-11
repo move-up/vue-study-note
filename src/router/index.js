@@ -64,6 +64,11 @@ const menuRouter = [
       component: resolve => { require(['@/pages/pagination/index'], resolve) },
       name: 'pagination'
     },
+    {
+      path: '/carousel',
+      component: resolve => { require(['@/pages/carousel/index'], resolve) },
+      name: 'carousel'
+    },
   ]
   },
   {
