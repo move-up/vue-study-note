@@ -4,9 +4,9 @@
     <div class="main-container">
       <navbar></navbar>
       <el-container style="height:900px;">
-        <el-aside width="200px">
+        <!-- <el-aside width="200px">
           <sidebar class="sidebar-container"></sidebar>
-        </el-aside>
+        </el-aside> -->
         <el-main>
           <!-- <tags-view></tags-view> -->
           <app-main></app-main>

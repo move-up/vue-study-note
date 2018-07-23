@@ -69,6 +69,26 @@ const menuRouter = [
       component: resolve => { require(['@/pages/carousel/index'], resolve) },
       name: 'carousel'
     },
+
+    //饿了么组件
+    {
+      path: '/element',
+      component: resolve => { require(['@/pages/element/index'], resolve) },
+      name: 'element',
+      title: '饿了么组件'
+    },
+    {
+      path: '/breadCrumb',
+      component: resolve => { require(['@/pages/element/breadCrumb'], resolve) },
+      name: 'breadCrumb',
+      title: '面包屑'
+    },
+    {
+      path: '/tab',
+      component: resolve => { require(['@/pages/element/tab'], resolve) },
+      name: 'tab',
+      title: '标签页'
+    },
   ]
   },
   {

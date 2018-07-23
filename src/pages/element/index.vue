@@ -2,122 +2,39 @@
   <div class="page-index">
 
     <div class="wrap">
-      <h1>目录</h1>
+      <h1>饿了么组件目录</h1>
       <div class="catalog">
         <div class="item">
-          <router-link to="/login" title="login">
+          <router-link to="/breadCrumb" title="breadCrumb">
               <div class="date">
                   <span>
-                    2018-03-17
+                    2018-07-23
                   </span>
               </div>
-              login
+              面包屑
           </router-link>
         </div>
         <div class="item">
-          <router-link to="/todolist" title="todolist">
+          <router-link to="/tab" title="标签页">
               <div class="date">
                   <span>
-                    2018-04-17
+                    2018-07-23
                   </span>
               </div>
-              todolist
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/userCenter/index" title="五化首页">
-              <div class="date">
-                  <span>
-                    2018-06-28
-                  </span>
-              </div>
-              vue-wh五化实例
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/typeof" title="typeof">
-              <div class="date">
-                  <span>
-                    2018-06-28
-                  </span>
-              </div>
-              判断数据类型
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/mock" title="mock">
-              <div class="date">
-                  <span>
-                    2018-06-28
-                  </span>
-              </div>
-              mock语法
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/api" title="api">
-              <div class="date">
-                  <span>
-                    2018-06-29
-                  </span>
-              </div>
-              api
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/timer" title="timer">
-              <div class="date">
-                  <span>
-                    2018-07-03
-                  </span>
-              </div>
-              timer
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/render" title="render">
-              <div class="date">
-                  <span>
-                    2018-07-04
-                  </span>
-              </div>
-              render
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/pagination" title="pagination">
-              <div class="date">
-                  <span>
-                    2018-07-08
-                  </span>
-              </div>
-              pagination
-          </router-link>
-        </div>
-        <div class="item">
-          <router-link to="/element" title="element">
-              <div class="date">
-                  <span>
-                    2018-07-08
-                  </span>
-              </div>
-              element组件
+              标签页
           </router-link>
         </div>
       </div>
     </div>
 
-    <!-- 计算器实例
-    <Add></Add> -->
+
   </div>
 </template>
 
 <script>
-import Add from './add'
   export default {
-    name: '',
+    name: 'element',
     components: {
-      Add
     },
     props: {
     },
@@ -132,6 +49,7 @@ import Add from './add'
 
     },
     created () {
+      console.log(this.$store)
 
     },
     mounted () {
