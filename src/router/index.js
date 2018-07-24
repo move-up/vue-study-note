@@ -50,6 +50,17 @@ const menuRouter = [
       name: 'api'
     },
     {
+      path: '/api2',
+      component: resolve => { require(['@/pages/mock/api2'], resolve) },
+      name: 'api2'
+    },
+    // 动态路径参数 以冒号开头
+    /* {
+      path: '/api2/:id',
+      component: resolve => { require(['@/pages/mock/apiDetail'], resolve) },
+      name: '详情'
+    }, */
+    {
       path: '/timer',
       component: resolve => { require(['@/pages/timer/index'], resolve) },
       name: 'timer'

@@ -107,7 +107,7 @@ export default {
   methods: {
     handleFetchData (res) {
       this.table.data = res.content;
-      this.table.total = res.total
+      this.table.total = Number(res.total)
     },
     handleSizeChange (size) {
       this.table.size = size

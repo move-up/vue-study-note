@@ -12,3 +12,28 @@ export default new Vuex.Store({
     user
   }
 })
+
+
+/*  const store = new Vuex.Store({
+
+  strict: process.env.NODE_ENV !== 'production', //在非生产环境下，使用严格模式
+  getters,
+  modules: {
+    user
+  },
+  state: {
+    count: 0
+  },
+  mutations: {
+    increment (state) {
+      state.count++
+      state.count++
+    }
+  }
+ })
+
+ export default store
+
+ store.commit('increment')
+
+console.log(store.state.count) */
