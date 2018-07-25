@@ -5,6 +5,23 @@ table {
 .text-center {
   text-align: center;
 }
+table {
+  width: 100%;
+  tbody > tr > td,
+  thead > tr > td {
+    padding: 6px;
+    border: 1px solid #ccc;
+    background: #fafafa;
+    color: #333;
+    .el-input {
+      text-align: left;
+    }
+    .el-button {
+      padding: 5px 10px;
+      font-size: 12px;
+    }
+  }
+}
 // .c-yellow {
 // 	color: #ffba00;
 // 	font-size: 16px;

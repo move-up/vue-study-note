@@ -70,6 +70,12 @@ const menuRouter = [
       name: 'tableEdite',
       title: '编辑表格'
     },
+    {
+      path: '/tableAddLine',
+      component: resolve => { require(['@/pages/tableEdite/tableAddLine'], resolve) },
+      name: 'tableAddLine',
+      title: '编辑表格'
+    },
     ]
   },
   {

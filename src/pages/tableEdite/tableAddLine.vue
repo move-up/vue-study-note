@@ -1,0 +1,114 @@
+<!-- 表格添加一行 -->
+<template>
+  <div class='table'>
+    <table class="table">
+      <thead>
+        <tr>
+          <td>编号</td>
+          <td>姓名</td>
+          <td>年龄</td>
+          <td>职业</td>
+          <td>爱好</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="(human, index) in humans" :key="index">
+          <td>{{ human.num }}</td>
+          <td>{{ human.name }}</td>
+          <td>{{ human.age }}</td>
+          <td>{{ human.work }}</td>
+          <td>{{ human.hobby }}</td>
+          <td>
+            <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show" v-on:click="handleAddLine">添加</el-button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</template>
+
+<script>
+export default {
+  name: '',
+
+  components: {},
+
+  props: {},
+
+  data () {
+    return {
+      humans: [
+        {
+          num: 1,
+          name: '小熊',
+          age: 23,
+          work: 'fe',
+          hobby: '乒乓球 唱歌',
+          show: false
+        },
+        {
+          num: 2,
+          name: '小李',
+          age: 25,
+          work: 'fe',
+          hobby: '羽毛球',
+          show: false
+        },
+        {
+          num: 3,
+          name: '小王',
+          age: 25,
+          work: 'sales',
+          hobby: '睡觉',
+          show: false
+        },
+        {
+          num: 4,
+          name: '小李',
+          age: 25,
+          work: 'fe',
+          hobby: '唱歌',
+          show: true
+        }
+      ]
+    }
+  },
+
+  computed: {},
+
+  watch: {},
+
+  created () {},
+
+  mounted () {},
+
+  methods: {
+    handleAddLine () {
+      let newNum = this.humans.length - 1
+      this.humans[newNum].show = false
+      newNum = this.humans[newNum].num + 1
+      // newNum = this.humans[newNum].num
+      let newHuman = {
+        num: newNum,
+        name: 'Mary',
+        age: 22,
+        work: '会计',
+        hobby: 'writing',
+        show: true
+      }
+      this.humans.push(newHuman)
+    },
+    deleteOneLine (i) {
+      var r = confirm("确定删除？")
+      if(r == true && this.humans.length > 1 ) {
+        this.humans.splice(i, 1)
+      } else {}
+    }
+  }
+}
+</script>
+
+<style lang='scss' scoped>
+</style>
