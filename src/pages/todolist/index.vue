@@ -40,9 +40,13 @@
         v-bind:title="todo.title"
         v-on:remove="todos.splice(index, 1)"
       >
-      {{ index + 1 }} . {{ todo.title }}
-      <el-button data-a="你没有权限点击" type="primary" icon="el-icon-edit" v-on:click="handleWrite()"></el-button>
-      <el-button type="danger" icon="el-icon-delete" v-on:click="deleteOne"></el-button>
+      {{ index + 1 }} . <span class="todo-title" v-show="!todo.show">{{ todo.title }}</span>
+      <span v-show="todo.show">
+        <el-input v-model="todo.title"></el-input>
+        <el-button type="primary" icon="el-icon-check" @click="handleMakeSure(index)">提交</el-button>
+      </span>
+      <el-button data-a="你没有权限点击" type="primary" icon="el-icon-edit" v-on:click="handleWrite(index)">修改</el-button>
+      <el-button type="danger" icon="el-icon-delete" v-on:click="deleteOne">删除</el-button>
       </li>
     </ul>
 
@@ -81,14 +85,17 @@
           {
             id: 1,
             title: 'Do the dishes',
+            show: false
           },
           {
             id: 2,
             title: 'Take out the trash',
+            show: false
           },
           {
             id: 3,
-            title: 'Mow the lawn'
+            title: 'Mow the lawn',
+            show: false
           }
         ],
         nextTodoId: 4,
@@ -96,8 +103,14 @@
       }
     },
     methods: {
-      handleWrite: function () {
-        console.log(event.currentTarget.dataset.a)
+      handleMakeSure: function (i) {
+        this.todos[i].show = !this.todos[i].show
+        // this.todos[i].show = false
+        // console.log('i:' + i + event.currentTarget.dataset.a + this.todos[i].title)
+      },
+      handleWrite: function (i) {
+        this.todos[i].show = !this.todos[i].show
+        // this.todos[i].show = true
       },
 
       addNewTodo: function () {
@@ -126,7 +139,7 @@
 
         var r = confirm("确定删除？")
         if(r === true){
-          this.items.pop(index,1)
+          this.todos.pop(index,1)
         } else {
 
         }
@@ -163,5 +176,13 @@
 ul li {
   list-style: none;
   margin-bottom: 10px;
+}
+.el-input,
+.todo-title {
+  display: inline-block;
+  width: 250px;
+}
+button {
+  margin-left: 10px;
 }
 </style>
