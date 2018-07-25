@@ -3,6 +3,7 @@
 <template>
   <div class='typeof'>
     <h1>请求数据</h1>
+    <h2>链接：<router-link to="/routerPush">routerPush实例</router-link></h2>
     <!-- <div class="clearfix dc-box-red text-center" v-for="(item,index) in friendsList" :key="index" >
       <li>{{ item.id }} . {{ item.name }}   {{ item.age }}   {{ item.area }}</li>
     </div> -->

@@ -2,7 +2,7 @@
 <template>
   <div class=''>
     <div style="height: 200px">
-      <interval></interval>
+      <interval @click.native="toggle()"></interval>
     </div>
     <div style="height: 200px">
       <timeout></timeout>
@@ -37,7 +37,12 @@ export default {
 
   mounted () {},
 
-  methods: {}
+  methods: {
+    toggle () {
+      let i = 0
+      console.log(i++)
+    }
+  }
 }
 </script>
 

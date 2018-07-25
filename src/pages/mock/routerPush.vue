@@ -2,7 +2,6 @@
 <!-- 判断数据类型 -->
 <template>
   <div>
-    <template v-if="!detail.show">
       <div class='typeof'>
         <h1>请求数据</h1>
         <el-table
@@ -12,13 +11,13 @@
           style="width: 100%">
           <el-table-column
             prop="userId"
-            label="序号"
-            width="180">
+            label="用户"
+            width="100">
           </el-table-column>
           <el-table-column
             prop="id"
             label="序号"
-            width="180">
+            width="100">
           </el-table-column>
           <el-table-column
             prop="title"
@@ -32,32 +31,25 @@
           <el-table-column
             fixed="right"
             label="操作"
-            width="100">
+            width="200">
             <template slot-scope="scope">
               <el-button @click="handleClick(scope.$index, scope.row)" type="text" size="small">查看</el-button>
+              <router-link :to="{name: 'detail',params: {userId: scope.row.userId} }">routerLink查看</router-link>
             </template>
           </el-table-column>
         </el-table>
       </div>
-    </template>
-    <template v-else>
-      <detail0
-        :data="detail.data"
-        v-model="detail.show"></detail0>
-    </template>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
 import { getArticleList } from "@/api/api"
-import Detail0 from './detail0.vue'
 
 export default {
   name: '',
 
   components: {
-    Detail0
   },
 
   props: {},
@@ -77,7 +69,6 @@ export default {
   },
 
   computed: {
-    ...mapActions(['updateDetail'])
   },
 
   watch: {
@@ -91,6 +82,7 @@ export default {
     }
     getArticleList(p2).then(res =>{
       this.articleList = res
+      localStorage.articleArr=JSON.stringify(this.films)
     })
   },
 
@@ -99,16 +91,7 @@ export default {
 
   methods: {
     handleClick(index, row) {
-      //  this.$router.push('/routerPush/detail/'+ row.userId);
-      // 传数据给vuex
-      this.updateDetail(row).then(() => {
-        // 跳转到对应详情路由
-        this.$router.push('/routerPush/'+ row.userId);
-      })
-      this.detail = Object.assign({}, this.detail, {
-        data: row,
-        show: true
-      })
+       this.$router.push('/routerPush/detail/'+ row.userId);
     }
   }
 }

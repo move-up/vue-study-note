@@ -23,85 +23,64 @@ const defaultRouter = [
 
 const menuRouter = [
   //懒加载路由
-  //首页
   {
     path: '/',
     component: Layout,
     redirect: '/home',
     children: [{
+      //首页
       path: '/home',
       component: resolve => { require(['@/pages/home/index'], resolve) },
       name: 'home',
-      meta: { title: 'home', icon: 'home', noCache: true }
+      title: '首页'
     },
     {
       path: '/typeof',
       component: resolve => { require(['@/pages/typeof/index'], resolve) },
-      name: 'typeof'
+      name: 'typeof',
+      title: '判断数据类型'
     },
-    {
-      path: '/mock',
-      component: resolve => { require(['@/pages/mock/index'], resolve) },
-      name: 'typeof'
-    },
-    {
-      path: '/api',
-      component: resolve => { require(['@/pages/mock/api'], resolve) },
-      name: 'api'
-    },
-    {
-      path: '/api2',
-      component: resolve => { require(['@/pages/mock/api2'], resolve) },
-      name: 'api2'
-    },
-    // 动态路径参数 以冒号开头
-    /* {
-      path: '/api2/:id',
-      component: resolve => { require(['@/pages/mock/apiDetail'], resolve) },
-      name: '详情'
-    }, */
     {
       path: '/timer',
       component: resolve => { require(['@/pages/timer/index'], resolve) },
-      name: 'timer'
+      name: 'timer',
+      title: '定时器'
     },
     {
       path: '/render',
       component: resolve => { require(['@/pages/render/index'], resolve) },
-      name: 'render'
+      name: 'render',
+      title: 'render函数'
     },
     {
       path: '/pagination',
       component: resolve => { require(['@/pages/pagination/index'], resolve) },
-      name: 'pagination'
+      name: 'pagination',
+      title: '分页'
     },
     {
       path: '/carousel',
       component: resolve => { require(['@/pages/carousel/index'], resolve) },
-      name: 'carousel'
-    },
-
-    //饿了么组件
-    {
-      path: '/element',
-      component: resolve => { require(['@/pages/element/index'], resolve) },
-      name: 'element',
-      title: '饿了么组件'
+      name: 'carousel',
+      title: '轮播'
     },
     {
-      path: '/breadCrumb',
-      component: resolve => { require(['@/pages/element/breadCrumb'], resolve) },
-      name: 'breadCrumb',
-      title: '面包屑'
+      path: '/table',
+      component: resolve => { require(['@/pages/tableEdite/index'], resolve) },
+      name: 'tableEdite',
+      title: '编辑表格'
     },
-    {
-      path: '/tab',
-      component: resolve => { require(['@/pages/element/tab'], resolve) },
-      name: 'tab',
-      title: '标签页'
-    },
-  ]
+    ]
   },
+  {
+    path: '/todolist',
+    name: 'todolist',
+    component: resolve => { require(['@/pages/todolist/index'], resolve) },
+    title: 'todolist'
+  },
+]
+//小模板
+const complateRouter = [
   {
     path: '/userCenter/index',
     component: Main,
@@ -137,17 +116,80 @@ const menuRouter = [
       meta: { title: '蔬菜', icon: 'home', noCache: true }
     }]
   },
-  //todolist
+]
+//饿了么组件
+const elementRouter = [
   {
-    path: '/todolist',
-    name: 'todolist',
-    component: resolve => { require(['@/pages/todolist/index'], resolve) },
-
-  },
+  path: '/mock',
+  component: Layout,
+  children: [
+    {
+      path: '/element',
+      component: resolve => { require(['@/pages/element/index'], resolve) },
+      name: 'element',
+      title: '饿了么组件'
+    },
+    {
+      path: '/breadCrumb',
+      component: resolve => { require(['@/pages/element/breadCrumb'], resolve) },
+      name: 'breadCrumb',
+      title: '面包屑'
+    },
+    {
+      path: '/tab',
+      component: resolve => { require(['@/pages/element/tab'], resolve) },
+      name: 'tab',
+      title: '标签页'
+    },
+  ]}
+]
+//api
+const apiRouter = [
+  {
+  path: '/mock',
+  component: Layout,
+  children: [
+    {
+      path: '/mock',
+      component: resolve => { require(['@/pages/mock/index'], resolve) },
+      name: 'mock',
+      title: 'mock接口'
+    },
+    {
+      path: '/api',
+      component: resolve => { require(['@/pages/mock/api'], resolve) },
+      name: 'api',
+      title: '分页'
+    },
+    {
+      path: '/api2',
+      component: resolve => { require(['@/pages/mock/api2'], resolve) },
+      name: 'api2',
+      title: ''
+    },
+    {
+      path: '/routerPush',
+      component: resolve => { require(['@/pages/mock/routerPush'], resolve) },
+      name: 'routerPush',
+      title: '路由传参'
+    },
+    {
+      path: '/routerPush/detail/:userId',
+      component: resolve => { require(['@/pages/mock/detail'], resolve) },
+      name: 'detail',
+      title: '详情页'
+    },
+    // 动态路径参数 以冒号开头
+    /* {
+      path: '/api2/:id',
+      component: resolve => { require(['@/pages/mock/apiDetail'], resolve) },
+      name: '详情'
+    }, */
+  ]}
 ]
 
 const router =  new Router({
-  routes: [...defaultRouter, ...menuRouter]
+  routes: [...defaultRouter, ...menuRouter, ...complateRouter, ...elementRouter, ...apiRouter]
 })
 
 // 路由拦截

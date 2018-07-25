@@ -1,7 +1,7 @@
 <template>
   <div class="">
 
-    <div class="todolist">
+<!--     <div class="todolist">
       <input type="text" v-model="newItem">
       <button @click="addNewItem(newItem)">确认</button>
       <ul>
@@ -19,7 +19,7 @@
         <i class="el-icon-share"></i>
         <i class="el-icon-delete"></i>
         <el-button type="primary" icon="el-icon-search"><i class="el-icon-delete"></i>搜索</el-button>
-      </div>
+      </div> -->
 
 <!-- <el-button type="primary" icon="el-icon-edit"></el-button>
 <el-button type="primary" icon="el-icon-share"></el-button>
@@ -39,8 +39,13 @@
         v-bind:key="todo.id"
         v-bind:title="todo.title"
         v-on:remove="todos.splice(index, 1)"
-      >{{ todo.title }}<button v-on:click="deleteOne"  class="el-icon-delete">X</button></li>
+      >
+      {{ index + 1 }} . {{ todo.title }}
+      <el-button data-a="你没有权限点击" type="primary" icon="el-icon-edit" v-on:click="handleWrite()"></el-button>
+      <el-button type="danger" icon="el-icon-delete" v-on:click="deleteOne"></el-button>
+      </li>
     </ul>
+
     <h2>checkbox</h2>
     <div id='example-3'>
       <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
@@ -91,6 +96,10 @@
       }
     },
     methods: {
+      handleWrite: function () {
+        console.log(event.currentTarget.dataset.a)
+      },
+
       addNewTodo: function () {
         this.todos.push({
           id: this.nextTodoId++,
@@ -150,12 +159,9 @@
   }
 </script>
 
-<style>
-/* ul li {
-  color: #333;
-  font-size: 16px;
+<style lang='scss' scoped>
+ul li {
+  list-style: none;
+  margin-bottom: 10px;
 }
-.c-white {
-  color: #fff;
-} */
 </style>
