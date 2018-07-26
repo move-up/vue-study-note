@@ -71,7 +71,7 @@
                     2018-07-03
                   </span>
               </div>
-              timer
+              timer定时器
           </router-link>
         </div>
         <div class="item">
@@ -98,10 +98,20 @@
           <router-link to="/element" title="element">
               <div class="date">
                   <span>
-                    2018-07-08
+                    2018-07-23
                   </span>
               </div>
               element组件
+          </router-link>
+        </div>
+        <div class="item">
+          <router-link to="/table" title="table">
+              <div class="date">
+                  <span>
+                    2018-07-26
+                  </span>
+              </div>
+              table表格
           </router-link>
         </div>
       </div>

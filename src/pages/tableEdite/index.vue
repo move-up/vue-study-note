@@ -1,19 +1,8 @@
 <!--  -->
 <template>
   <div class=''>
+    <h2>链接：<router-link to="/tableAddLine">添加或删除一行</router-link></h2>
     table编辑
-    <table>
-      <tbody>
-        <tr>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-          <td></td>
-        </tr>
-      </tbody>
-    </table>
 							<div class="page form">
 								<div class="container">
 									<!-- <table class="table-bordered text-center cl">

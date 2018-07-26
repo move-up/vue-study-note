@@ -101,10 +101,27 @@ export default {
       this.humans.push(newHuman)
     },
     deleteOneLine (i) {
-      var r = confirm("确定删除？")
-      if(r == true && this.humans.length > 1 ) {
-        this.humans.splice(i, 1)
-      } else {}
+      console.log(i)
+      // var r = confirm("确定删除？")
+      // if(r == true && this.humans.length > 1 && this.humans.length == i + 1) {
+      //   this.humans[i - 1].show = true
+      //   this.humans.splice(i, 1)
+      // } else if (r == true && this.humans.length > 1) {
+      //   this.humans.splice(i, 1)
+      // } else {
+      //   confirm("主人只剩下最后一行了，不可再删了！")
+      // }
+      if(this.humans.length > 1) {
+        var r = confirm("确定删除？")
+        if(r == true && this.humans.length == i + 1) {
+          this.humans[i - 1].show = true
+          this.humans.splice(i, 1)
+        } else {
+          this.humans.splice(i, 1)
+        }
+      } else {
+        confirm("主人只剩下最后一行了，不可再删了！")
+      }
     }
   }
 }
