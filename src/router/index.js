@@ -8,6 +8,9 @@ import Cookies from 'js-cookie'
 import Layout from '@/components/Layout'
 import Main from '@/components/main'
 
+// 路由切割1
+const Home = () => import('@/pages/home/index')
+
 Vue.use(Router)
 
 const defaultRouter = [
@@ -27,13 +30,16 @@ const menuRouter = [
     path: '/',
     component: Layout,
     redirect: '/home',
-    children: [{
-      //首页
-      path: '/home',
-      component: resolve => { require(['@/pages/home/index'], resolve) },
-      name: 'home',
-      title: '首页'
-    },
+    children: [
+    //   {
+    //   //首页
+    //   path: '/home',
+    //   component: resolve => { require(['@/pages/home/index'], resolve) },
+    //   name: 'home',
+    //   title: '首页'
+    // },
+    // 路由切割2
+    {path: '/home', component: Home},
     {
       path: '/typeof',
       component: resolve => { require(['@/pages/typeof/index'], resolve) },
@@ -74,9 +80,35 @@ const menuRouter = [
       path: '/tableAddLine',
       component: resolve => { require(['@/pages/tableEdite/tableAddLine'], resolve) },
       name: 'tableAddLine',
-      title: '编辑表格'
+      title: '表格添加或删除一行'
+    },
+    {
+      path: '/tableData',
+      component: resolve => { require(['@/pages/tableEdite/tableData'], resolve) },
+      name: 'tableData',
+      title: '表格'
+    },
+    {
+      path: '/tableMuti',
+      component: resolve => { require(['@/pages/tableEdite/tableMuti'], resolve) },
+      name: 'tableMuti',
+      title: '表格'
     },
     ]
+  },
+  {
+    path: '/muti1',
+    components: {
+      defaulst: 'carousel',
+      a: 'pagination',
+    }
+  },
+  {
+    path: '/muti2',
+    components: {
+      defaulst: 'pagination',
+      a: 'carousel',
+    }
   },
   {
     path: '/todolist',

@@ -3,7 +3,7 @@
   <div class='' ref="div">
     个人中心
     <!-- <el-table ref="table"></el-table> -->
-        <my-button
+        <!-- <my-button
           :disabled="btn.disabled"
           :title="btn.title">
         </my-button>
@@ -18,7 +18,7 @@
       @showbox="toshow"
       @transferUser="getUser"></range>
       <p>{{ rg.value }} 用户名为：{{ user }}</p>
-      <!-- <range :text="'创业项目名称'" v-model="rg.value"></range> -->
+      <range :text="'创业项目名称'" v-model="rg.value"></range>
 
       <h2>组件GirlGroup：</h2>
       <girl-group
@@ -51,7 +51,7 @@
             v-model="searchText"
             :errorTipCon="bo.errorTipCon">
             </blog>
-        </div>
+        </div> -->
   </div>
 </template>
 

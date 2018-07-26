@@ -223,33 +223,17 @@
                       </tr>
                     </tbody>
                     <tbody>
-                      <tr v-for="(col, index) in cols" :key="index" v-if="index == 0">
+                      <tr v-for="(col, index) in cols" :key="index">
                         <!-- 项目推进计划（2单元格） -->
                         <td
                           v-for="(opt, key) in col"
                           v-if="index === 0"
-                          :rowspan="(index === 0) ? cols.length : 0"
+                          :rowspan="(index === 0) ? cols.length : 1"
                           :key="key">
                           <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="key"></el-input>
                           <el-checkbox v-else-if="opt.type === 'check'" v-model="opt.value" :name="key"></el-checkbox>
                           <template v-else>
-                            {{ col.num.value }}HAHAH
-                          </template>
-                        </td>
-                        <td>
-                          <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-                          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="col.show" v-on:click="handleAddLine">添加</el-button>
-                        </td>
-                      </tr>
-                      <tr v-for="(col, index) in cols" :key="index" v-else>
-                        <!-- 项目推进计划（2单元格） -->
-                        <td
-                          v-for="(opt, key) in col"
-                          :key="key">
-                          <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="key"></el-input>
-                          <el-checkbox v-else-if="opt.type === 'check'" v-model="opt.value" :name="key"></el-checkbox>
-                          <template>
-                            {{ col.num.value }}HAHAH
+                            {{ col.num.value }}
                           </template>
                         </td>
                         <td>
@@ -311,10 +295,10 @@ export default {
           show: false
         },
         {
-          // one: {
-          //   value: 'a',
-          //   type: 'input'
-          // },
+          one: {
+            value: 'a',
+            type: 'input'
+          },
           two: {
             value: 'a',
             type: 'input'

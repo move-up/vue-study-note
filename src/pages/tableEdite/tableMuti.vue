@@ -4,6 +4,7 @@
     <table class="table">
       <thead>
         <tr>
+          <td>性别</td>
           <td>编号</td>
           <td>姓名</td>
           <td>年龄</td>
@@ -13,7 +14,20 @@
         </tr>
       </thead>
       <tbody>
+        <!-- <tr>
+          <td rowspan="4">男</td>
+          <td>1</td>
+          <td>小熊</td>
+          <td>23</td>
+          <td>fe</td>
+          <td>乒乓球 唱歌</td>
+          <td>
+            <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true" v-on:click="handleAddLine">添加</el-button>
+          </td>
+        </tr> -->
         <tr v-for="(human, index) in humans" :key="index">
+          <td v-if="index == 0" :rowspan="humans.length">{{ human.sex }}</td>
           <td>{{ human.num }}</td>
           <td>{{ human.name }}</td>
           <td>{{ human.age }}</td>
@@ -21,7 +35,7 @@
           <td>{{ human.hobby }}</td>
           <td>
             <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show" v-on:click="handleAddLine">添加</el-button>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show"  @click="handleAddLine">添加</el-button>
           </td>
         </tr>
       </tbody>
@@ -41,6 +55,7 @@ export default {
     return {
       humans: [
         {
+          sex: 'man',
           num: 1,
           name: '小熊',
           age: 23,
@@ -49,6 +64,7 @@ export default {
           show: false
         },
         {
+          sex: 'woman',
           num: 2,
           name: '小李',
           age: 25,
@@ -57,6 +73,7 @@ export default {
           show: false
         },
         {
+          sex: 'woman',
           num: 3,
           name: '小王',
           age: 25,
@@ -65,6 +82,7 @@ export default {
           show: false
         },
         {
+          sex: 'woman',
           num: 4,
           name: '小李',
           age: 25,
@@ -90,6 +108,7 @@ export default {
       this.humans[newNum].show = false
       newNum = this.humans[newNum].num + 1
       let newHuman = {
+        sex: 'woman',
         num: newNum,
         name: 'Mary',
         age: 22,
