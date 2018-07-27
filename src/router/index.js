@@ -65,6 +65,15 @@ const menuRouter = [
       title: '分页'
     },
     {
+      path: '/muti',
+      components: {
+        default: resolve => { require(['@/pages/pagination/muti'], resolve) },
+        helper: interval
+      },
+      name: 'muti',
+      title: 'muti'
+    },
+    {
       path: '/carousel',
       component: resolve => { require(['@/pages/carousel/index'], resolve) },
       name: 'carousel',
@@ -95,20 +104,6 @@ const menuRouter = [
       title: '表格'
     },
     ]
-  },
-  {
-    path: '/muti1',
-    components: {
-      defaulst: 'carousel',
-      a: 'pagination',
-    }
-  },
-  {
-    path: '/muti2',
-    components: {
-      defaulst: 'pagination',
-      a: 'carousel',
-    }
   },
   {
     path: '/todolist',

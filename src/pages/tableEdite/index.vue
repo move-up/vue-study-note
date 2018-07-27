@@ -4,8 +4,7 @@
     <h2>链接：<router-link to="/tableAddLine">添加或删除一行</router-link></h2>
     <h2>链接：<router-link to="/tableCols">多行</router-link></h2>
     <h2>链接：<router-link to="/tableMuti">复杂</router-link></h2>
-    <h2>链接1：<router-link to="/muti1">routerview1</router-link></h2>
-    <h2>链接2：<router-link to="/muti2">routerview2</router-link></h2>
+    <h2>链接1：<router-link to="/muti">routerview1</router-link></h2>
     <router-view></router-view>
     <router-view class="text-center" name="a"></router-view>
     <router-view class="text-center" name="b"></router-view>
@@ -238,12 +237,27 @@
                         </td>
                         <td>
                           <!-- 问题： 删除第一行的时候有问题 -->
-                          <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
+                          <!-- <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
                           <template v-if="index === cols.length - 1">
                             <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
                           </template>
                           <template v-else>
                             <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
+                          </template> -->
+                          <!-- 只有一行 -->
+                          <template v-if="index === 0 && cols.length === 1">
+                            <el-button type="danger" icon="el-icon-remove-outline" v-show="false" v-on:click="deleteOneLine(index)">删除</el-button>
+                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
+                          </template>
+                          <!-- 中间行数 -->
+                          <template v-else-if="index > 0 && index !== cols.length - 1">
+                            <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
+                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
+                          </template>
+                          <!-- 最后一行 -->
+                          <template v-else-if="index > 0 && index === cols.length - 1">
+                            <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
+                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
                           </template>
                         </td>
                       </tr>
@@ -330,6 +344,8 @@ export default {
             value: 1,
             type: 'text'
           },
+          // colsAddShow: false,
+          // colsDeleteShow: false,
         },
         {
           two: {
@@ -530,8 +546,8 @@ export default {
       if(this.cols.length > 1) {
         var r = confirm("确定删除？")
         if(r == true && this.cols.length == i + 1) {
-          this.cols[i - 1].col.show = true
-          console.log(this.cols[i-1])
+          // this.cols[i - 1].col.colsAddShow = true
+          // console.log(this.cols[i - 1])
           this.cols.splice(i, 1)
         } else {
           this.cols.splice(i, 1)

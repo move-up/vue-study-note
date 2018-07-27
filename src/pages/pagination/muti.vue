@@ -1,23 +1,22 @@
 <!--  -->
 <template>
-  <div class='main'>
-      <Header></Header>
-      <Sidebar></Sidebar>
-      <keep-alive>
-        <router-view></router-view>
-      </keep-alive>
+  <div class=''>
+    router-view页面
+    <interval></interval>
+    <router-view name="interval"></router-view>
   </div>
 </template>
 
 <script>
-import Header from './header.vue'
-import Sidebar from './sidebar.vue'
+import Sidebar from '@/components/sidebar'
+import Interval from '@/pages/timer/interval'
+
 export default {
   name: '',
 
   components: {
-      Header,
-      Sidebar,
+    Sidebar,
+    Interval
   },
 
   props: {},

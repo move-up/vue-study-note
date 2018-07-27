@@ -63,7 +63,7 @@
 import { getTableListPage } from '@/api/api'
 
 export default {
-  name: '',
+  name: 'pagination',
 
   components: {
   },

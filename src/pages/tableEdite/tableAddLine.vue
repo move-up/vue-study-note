@@ -23,21 +23,6 @@
             <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
             <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show" v-on:click="handleAddLine">添加</el-button>
           </td>
-                          <!-- 只有一行 -->
-                          <template v-if="index === 0 && cols.length === 1">
-                            <el-button type="danger" icon="el-icon-remove-outline" v-show="colsDelete == false" v-on:click="deleteOneLine(index)">删除</el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="colsAdd == true"  v-on:click="handleAddLine">添加</el-button>
-                          </template>
-                          <!-- 中间行数 -->
-                          <template v-else-if="index > 0 && index !== cols.length - 1">
-                            <el-button type="danger" icon="el-icon-remove-outline" v-show="colsDelete == true" v-on:click="deleteOneLine(index)">删除</el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="colsAdd == false"  v-on:click="handleAddLine">添加</el-button>
-                          </template>
-                          <!-- 最后一行 -->
-                          <template v-else-if="index > 0 && index === cols.length - 1">
-                            <el-button type="danger" icon="el-icon-remove-outline" v-show="colsDelete == true" v-on:click="deleteOneLine(index)">删除</el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="colsAdd == true"  v-on:click="handleAddLine">添加</el-button>
-                          </template>
         </tr>
       </tbody>
     </table>
