@@ -2,7 +2,7 @@
 <template>
   <div class=''>
     <h2>链接：<router-link to="/tableAddLine">添加或删除一行</router-link></h2>
-    <h2>链接：<router-link to="/tableData">绑定数据</router-link></h2>
+    <h2>链接：<router-link to="/tableCols">多行</router-link></h2>
     <h2>链接：<router-link to="/tableMuti">复杂</router-link></h2>
     <h2>链接1：<router-link to="/muti1">routerview1</router-link></h2>
     <h2>链接2：<router-link to="/muti2">routerview2</router-link></h2>
@@ -216,45 +216,35 @@
                     <tbody>
                       <tr>
                         <td colspan="2">项目推进计划</td>
-                        <td colspan="2">一季度</td>
-                        <td colspan="2">二季度</td>
+                        <td colspan="3">一季度</td>
+                        <td colspan="3">二季度</td>
+                        <td colspan="3">三季度</td>
+                        <td colspan="3">四季度</td>
                         <td>责任单位</td>
                         <td>操作</td>
                       </tr>
                     </tbody>
                     <tbody>
-                      <tr v-for="(col, index) in cols" :key="index" v-if="index == 0">
-                        <!-- 项目推进计划（2单元格） -->
+                      <tr v-for="(col, index) in cols" :key="index">
                         <td
-                          v-for="(opt, key) in col"
-                          v-if="index === 0"
-                          :rowspan="(index === 0) ? cols.length : 0"
-                          :key="key">
+                          v-for="(opt, key, _index) in col"
+                          :rowspan="(index === 0 && _index === 0) ? cols.length : 1"
+                          :key="_index">
                           <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="key"></el-input>
-                          <el-checkbox v-else-if="opt.type === 'check'" v-model="opt.value" :name="key"></el-checkbox>
+                          <el-checkbox v-else-if="opt.type === 'checkbox'" v-model="opt.value" :name="key"></el-checkbox>
                           <template v-else>
-                            {{ col.num.value }}HAHAH
+                            {{ opt.value }}
                           </template>
                         </td>
                         <td>
+                          <!-- 问题： 删除第一行的时候有问题 -->
                           <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-                          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="col.show" v-on:click="handleAddLine">添加</el-button>
-                        </td>
-                      </tr>
-                      <tr v-for="(col, index) in cols" :key="index" v-else>
-                        <!-- 项目推进计划（2单元格） -->
-                        <td
-                          v-for="(opt, key) in col"
-                          :key="key">
-                          <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="key"></el-input>
-                          <el-checkbox v-else-if="opt.type === 'check'" v-model="opt.value" :name="key"></el-checkbox>
-                          <template>
-                            {{ col.num.value }}HAHAH
+                          <template v-if="index === cols.length - 1">
+                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
                           </template>
-                        </td>
-                        <td>
-                          <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-                          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="col.show" v-on:click="handleAddLine">添加</el-button>
+                          <template v-else>
+                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
+                          </template>
                         </td>
                       </tr>
                     </tbody>
@@ -281,100 +271,267 @@ export default {
       cols: [
         {
           one: {
-            value: 'a',
+            value: '',
             type: 'input'
           },
           two: {
-            value: 'a',
+            value: '',
             type: 'input'
           },
           three: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
           },
           four: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
           },
           five: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
           },
           six: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
           },
           num: {
-            value: '1',
+            value: 1,
             type: 'text'
           },
-          show: false
         },
         {
-          // one: {
-          //   value: 'a',
-          //   type: 'input'
-          // },
           two: {
-            value: 'a',
+            value: '',
             type: 'input'
           },
           three: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
           },
           four: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
           },
           five: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
           },
           six: {
-            value: 'a',
-            type: 'input'
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
           },
           num: {
-            value: '1',
+            value: 2,
             type: 'text'
           },
-          show: true
+        },
+        {
+          two: {
+            value: '',
+            type: 'input'
+          },
+          three: {
+            value: '',
+            type: 'checkbox'
+          },
+          four: {
+            value: '',
+            type: 'checkbox'
+          },
+          five: {
+            value: '',
+            type: 'checkbox'
+          },
+          six: {
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
+          },
+          num: {
+            value: 3,
+            type: 'text'
+          },
         },
       ]
     }
   },
 
-  computed: {},
+  computed: {
+  },
 
   watch: {},
 
-  created () {},
+  created () {
+  },
 
   mounted () {},
 
   methods: {
     handleAddLine () {
       let newNum = this.cols.length - 1
-      this.cols[newNum].show = false
-      newNum = this.cols[newNum].num + 1
-      let newHuman = {
-          one: '',
-          two: '',
-          three: '',
-          four: '',
-          five: '',
-          six: '',
-          num: newNum,
-          show: true
-      }
+      newNum = this.cols[newNum].num.value + 1
+      let newHuman =
+        {
+          two: {
+            value: '',
+            type: 'input'
+          },
+          three: {
+            value: '',
+            type: 'checkbox'
+          },
+          four: {
+            value: '',
+            type: 'checkbox'
+          },
+          five: {
+            value: '',
+            type: 'checkbox'
+          },
+          six: {
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
+          },
+          num: {
+            value: newNum,
+            type: 'text'
+          },
+        }
       this.cols.push(newHuman)
     },
     deleteOneLine (i) {
       if(this.cols.length > 1) {
         var r = confirm("确定删除？")
         if(r == true && this.cols.length == i + 1) {
-          this.cols[i - 1].show = true
+          this.cols[i - 1].col.show = true
+          console.log(this.cols[i-1])
           this.cols.splice(i, 1)
         } else {
           this.cols.splice(i, 1)
@@ -393,18 +550,27 @@ i {
 }
 .form table {
   width: 100%;
-  tbody > tr > td {
-    padding: 6px;
-    border: 1px solid #ccc;
-    background: #fafafa;
-    color: #333;
-    .el-input {
-      // max-width: 200px;
-      text-align: left;
+  tbody > tr {
+    td {
+      padding: 6px;
+      border: 1px solid #ccc;
+      background: #fafafa;
+      color: #333;
+      .el-input {
+        max-width: 200px;
+        text-align: left;
+        .el-input__inner {
+          height: 30px;
+          line-height: 30px;
+        }
+      }
+      .el-button {
+        padding: 5px 10px;
+        font-size: 12px;
+      }
     }
-    .el-button {
-      padding: 5px 10px;
-      font-size: 12px;
+    td:last-of-type {
+      text-align: left;
     }
   }
 }

@@ -73,7 +73,7 @@ const menuRouter = [
     {
       path: '/table',
       component: resolve => { require(['@/pages/tableEdite/index'], resolve) },
-      name: 'tableEdite',
+      name: 'table',
       title: '编辑表格'
     },
     {
@@ -83,9 +83,9 @@ const menuRouter = [
       title: '表格添加或删除一行'
     },
     {
-      path: '/tableData',
-      component: resolve => { require(['@/pages/tableEdite/tableData'], resolve) },
-      name: 'tableData',
+      path: '/tableCols',
+      component: resolve => { require(['@/pages/tableEdite/tableCols'], resolve) },
+      name: 'tableCols',
       title: '表格'
     },
     {

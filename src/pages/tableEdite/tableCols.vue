@@ -4,6 +4,7 @@
     <table class="table">
       <thead>
         <tr>
+          <td>性别</td>
           <td>编号</td>
           <td>姓名</td>
           <td>年龄</td>
@@ -14,6 +15,7 @@
       </thead>
       <tbody>
         <tr v-for="(human, index) in humans" :key="index">
+          <td v-if="index == 0" :rowspan="humans.length">{{ human.sex }}</td>
           <td>{{ human.num }}</td>
           <td>{{ human.name }}</td>
           <td>{{ human.age }}</td>
@@ -21,23 +23,8 @@
           <td>{{ human.hobby }}</td>
           <td>
             <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show" v-on:click="handleAddLine">添加</el-button>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show"  @click="handleAddLine">添加</el-button>
           </td>
-                          <!-- 只有一行 -->
-                          <template v-if="index === 0 && cols.length === 1">
-                            <el-button type="danger" icon="el-icon-remove-outline" v-show="colsDelete == false" v-on:click="deleteOneLine(index)">删除</el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="colsAdd == true"  v-on:click="handleAddLine">添加</el-button>
-                          </template>
-                          <!-- 中间行数 -->
-                          <template v-else-if="index > 0 && index !== cols.length - 1">
-                            <el-button type="danger" icon="el-icon-remove-outline" v-show="colsDelete == true" v-on:click="deleteOneLine(index)">删除</el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="colsAdd == false"  v-on:click="handleAddLine">添加</el-button>
-                          </template>
-                          <!-- 最后一行 -->
-                          <template v-else-if="index > 0 && index === cols.length - 1">
-                            <el-button type="danger" icon="el-icon-remove-outline" v-show="colsDelete == true" v-on:click="deleteOneLine(index)">删除</el-button>
-                            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="colsAdd == true"  v-on:click="handleAddLine">添加</el-button>
-                          </template>
         </tr>
       </tbody>
     </table>
@@ -56,6 +43,7 @@ export default {
     return {
       humans: [
         {
+          sex: 'man',
           num: 1,
           name: '小熊',
           age: 23,
@@ -64,6 +52,7 @@ export default {
           show: false
         },
         {
+          sex: 'woman',
           num: 2,
           name: '小李',
           age: 25,
@@ -72,6 +61,7 @@ export default {
           show: false
         },
         {
+          sex: 'woman',
           num: 3,
           name: '小王',
           age: 25,
@@ -80,6 +70,7 @@ export default {
           show: false
         },
         {
+          sex: 'woman',
           num: 4,
           name: '小李',
           age: 25,
@@ -105,6 +96,7 @@ export default {
       this.humans[newNum].show = false
       newNum = this.humans[newNum].num + 1
       let newHuman = {
+        sex: 'woman',
         num: newNum,
         name: 'Mary',
         age: 22,
