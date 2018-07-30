@@ -223,89 +223,37 @@
               <td>操作</td>
             </tr>
           </tbody>
-          <tbody>
-            <tr v-for="(col, index) in cols" :key="index">
-              <td
-                v-for="(opt, key, _index) in col"
-                :rowspan="(index === 0 && _index === 0) ? cols.length : 1"
-                :key="_index">
-                <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="`${(index + 1) + key}`"></el-input>
-                <el-checkbox v-else-if="opt.type === 'checkbox'" v-model="opt.value" :name="`${(index + 1) + key}`"></el-checkbox>
-                <template v-else>
-                  {{ opt.value }}
-                </template>
-              </td>
-              <td>
-                <!-- 问题： 删除第一行的时候有问题 -->
-                <!-- <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-                <template v-if="index === cols.length - 1">
-                  <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
-                </template>
-                <template v-else>
-                  <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
-                </template> -->
-                <!-- 只有一行 -->
-                <template v-if="index === 0 && cols.length === 1">
-                  <el-button type="danger" icon="el-icon-remove-outline" v-show="false" v-on:click="deleteOneLine(index)">删除</el-button>
-                  <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
-                </template>
-                <!-- 中间行数 -->
-                <template v-else-if="index > 0 && index !== cols.length - 1">
-                  <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
-                  <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
-                </template>
-                <!-- 最后一行 -->
-                <template v-else-if="index > 0 && index === cols.length - 1">
-                  <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
-                  <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
-                </template>
-              </td>
-            </tr>
-          </tbody>
+          <editable-cell
+            v-for="(cols, index) in colsList"
+            :key="index"
+            :id="index"
+            :canAdd="true"
+            @add="handleAddCell"
+            :cols="cols"/>
         </table>
       </div>
     </div>
 
-    <ul>
-      <li
-      v-for="(user, index) in users"
-      v-if="user.isActive"
-      :key="index">
-      {{ user.name }}
-      </li>
-    </ul>
   </div>
 </template>
 
 <script>
 import carousel from '../carousel/index'
 import pagination from '../pagination/index'
+import EditableCell from './editableCell.vue'
 
 export default {
   name: '',
 
   components: {
+    EditableCell
   },
 
   props: {},
 
   data () {
     return {
-      users: [
-        {
-          id: 1,
-          name: 'li',
-          sex: 'girl',
-          isActive: true
-        },
-        {
-          id: 1,
-          name: 'wang',
-          sex: 'boy',
-          isActive: false
-        }
-      ],
-      cols: [
+      colTpl: [
         {
           one: {
             value: '',
@@ -486,7 +434,8 @@ export default {
             type: 'text'
           },
         },
-      ]
+      ],
+      colsList: []
     }
   },
 
@@ -496,88 +445,15 @@ export default {
   watch: {},
 
   created () {
+    this.colsList.push(window._.cloneDeep(this.colTpl))
   },
 
   mounted () {},
 
   methods: {
-    handleAddLine () {
-      let newNum = this.cols.length - 1
-      newNum = this.cols[newNum].num.value + 1
-      let newHuman =
-        {
-          two: {
-            value: '',
-            type: 'input'
-          },
-          three: {
-            value: '',
-            type: 'checkbox'
-          },
-          four: {
-            value: '',
-            type: 'checkbox'
-          },
-          five: {
-            value: '',
-            type: 'checkbox'
-          },
-          six: {
-            value: '',
-            type: 'checkbox'
-          },
-          seven: {
-            value: '',
-            type: 'checkbox'
-          },
-          eight: {
-            value: '',
-            type: 'checkbox'
-          },
-          ten: {
-            value: '',
-            type: 'checkbox'
-          },
-          oneOne: {
-            value: '',
-            type: 'checkbox'
-          },
-          oneTwo: {
-            value: '',
-            type: 'checkbox'
-          },
-          oneThree: {
-            value: '',
-            type: 'checkbox'
-          },
-          oneFour: {
-            value: '',
-            type: 'checkbox'
-          },
-          oneFive: {
-            value: '',
-            type: 'checkbox'
-          },
-          num: {
-            value: newNum,
-            type: 'text'
-          },
-        }
-      this.cols.push(newHuman)
-    },
-    deleteOneLine (i) {
-      if(this.cols.length > 1) {
-        var r = confirm("确定删除？")
-        if(r == true && this.cols.length == i + 1) {
-          // this.cols[i - 1].col.colsAddShow = true
-          // console.log(this.cols[i - 1])
-          this.cols.splice(i, 1)
-        } else {
-          this.cols.splice(i, 1)
-        }
-      } else {
-        confirm("主人只剩下最后一行了，不可再删了！")
-      }
+    handleAddCell () {
+      let tpl = window._.cloneDeep(this.colTpl)
+      this.colsList.push(tpl)
     }
   }
 }

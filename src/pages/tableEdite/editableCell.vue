@@ -1,13 +1,14 @@
 <!--  -->
 <template>
   <tbody>
-    <tr v-for="(col, index) in _colsList" :key="index">
+    <tr v-for="(col, index) in cols" :key="index">
       <td
         v-for="(opt, key, _index) in col"
         :rowspan="(index === 0 && _index === 0) ? cols.length : 1"
         :key="_index">
-        <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="(index + 1) + key"></el-input>
-        <el-checkbox v-else-if="opt.type === 'checkbox'" v-model="opt.value" :name="`${(index + 1) + key}`"></el-checkbox>
+        <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="String(id) + (index + 1) + key"></el-input>
+        <el-checkbox v-else-if="opt.type === 'checkbox'" v-model="opt.value" :name="`${String(id) + (index + 1) + key}`"></el-checkbox>
+        <el-button v-if="(index === 0 && _index === 0 && canAdd)" type="primary" icon="el-icon-circle-plus-outline" v-on:click="$emit('add')">添加</el-button>
         <template v-else>
           {{ opt.value }}
         </template>
@@ -43,12 +44,19 @@ export default {
     cols: {
       type: [Array],
       required: true
+    },
+    canAdd: { // 能否添加
+      type: [Boolean],
+      default: false
+    },
+    id: {
+      type: [Number],
+      required: true
     }
   },
 
   data () {
     return {
-      _colsList: []
     }
   },
 
