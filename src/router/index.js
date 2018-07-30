@@ -10,6 +10,12 @@ import Main from '@/components/main'
 
 // 路由切割1
 const Home = () => import('@/pages/home/index')
+const Interval = () => import('@/pages/timer/interval')
+const Timeout = {
+  template: `
+  <div>这是timeout</div>
+  `
+}
 
 Vue.use(Router)
 
@@ -63,15 +69,6 @@ const menuRouter = [
       component: resolve => { require(['@/pages/pagination/index'], resolve) },
       name: 'pagination',
       title: '分页'
-    },
-    {
-      path: '/muti',
-      components: {
-        default: resolve => { require(['@/pages/pagination/muti'], resolve) },
-        helper: interval
-      },
-      name: 'muti',
-      title: 'muti'
     },
     {
       path: '/carousel',
@@ -153,9 +150,18 @@ const complateRouter = [
 //饿了么组件
 const elementRouter = [
   {
-  path: '/mock',
+  path: '/element',
   component: Layout,
   children: [
+    {
+      path: '/muti',
+      components: {
+        default: resolve => { require(['@/pages/pagination/muti'], resolve) },
+        helper: Timeout
+      },
+      name: 'muti',
+      title: 'router-view命名视图'
+    },
     {
       path: '/element',
       component: resolve => { require(['@/pages/element/index'], resolve) },

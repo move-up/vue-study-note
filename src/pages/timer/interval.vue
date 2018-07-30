@@ -2,7 +2,7 @@
 <template>
   <div class=''>
     <div class='demo' :class="classes" @mouseover="handleMouseover" @mouseout="handleMouseout">
-      <span>interval</span>
+      <span>interval 定时器i</span>
     </div>
   </div>
 </template>

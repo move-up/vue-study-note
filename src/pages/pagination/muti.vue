@@ -3,20 +3,21 @@
   <div class=''>
     router-view页面
     <interval></interval>
-    <router-view name="interval"></router-view>
+    <router-view name="helper"></router-view>
+    <!-- <router-view name="timeout"></router-view> -->
   </div>
 </template>
 
 <script>
-import Sidebar from '@/components/sidebar'
 import Interval from '@/pages/timer/interval'
+// import Timeout from '@/pages/timer/timeout'
 
 export default {
   name: '',
 
   components: {
-    Sidebar,
-    Interval
+    Interval,
+    // Timeout
   },
 
   props: {},

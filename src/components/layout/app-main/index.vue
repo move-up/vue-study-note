@@ -5,9 +5,9 @@
     <!-- content -->
     <transition
       name="fade" mode="out-in">
-      <keep-alive>
+      <transition>
         <router-view></router-view>
-      </keep-alive>
+      </transition>
     </transition>
   </div>
 </template>

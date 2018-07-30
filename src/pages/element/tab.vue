@@ -1,5 +1,6 @@
 <!-- 分页 -->
 <template>
+<div>
   <el-tabs :tab-position="tabPosition" style="height: 200px;">
     <el-tab-pane label="表格">
       <el-table
@@ -53,14 +54,23 @@
     </el-tab-pane>
     <el-tab-pane label="定时任务补偿title">定时任务补偿content</el-tab-pane>
   </el-tabs>
+
+
+    <div style="margin-top: 150px;">
+        <Tab v-model="tab" :options="options"></Tab>
+        <p class="info">{{tab}}</p>
+    </div>
+</div>
 </template>
 
 <script>
+import Tab from "@/components/tab"
 
 export default {
   name: '',
 
   components: {
+    Tab
   },
 
   props: {},
@@ -92,7 +102,23 @@ export default {
           date: '2016-05-03',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1516 弄'
-        }]
+        }],
+
+                tab: 'bj',
+                options: [{
+                    value: 'bj',
+                    text: '北京'
+                }, {
+                    value: 'sh',
+                    text: '上海',
+                    disabled: true
+                }, {
+                    value: 'gz',
+                    text: '广州'
+                }, {
+                    value: 'sz',
+                    text: '深圳'
+                }]
     }
   },
 

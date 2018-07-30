@@ -2,7 +2,7 @@
 <template>
   <div class=''>
     <div class='demo' :class="classes" @mouseover="handleMouseover" @mouseout="handleMouseout">
-      <span>timeout</span>
+      <span>timeout 定时器t</span>
     </div>
   </div>
 </template>
