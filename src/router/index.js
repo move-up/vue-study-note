@@ -11,11 +11,7 @@ import Main from '@/components/main'
 // 路由切割1
 const Home = () => import('@/pages/home/index')
 const Interval = () => import('@/pages/timer/interval')
-const Timeout = {
-  template: `
-  <div>这是timeout</div>
-  `
-}
+const Timeout = () => import('@/pages/timer/timeout')
 
 Vue.use(Router)
 
@@ -156,9 +152,18 @@ const elementRouter = [
     {
       path: '/muti',
       components: {
-        default: resolve => { require(['@/pages/pagination/muti'], resolve) },
-        helper: Timeout
+        default: resolve => { require(['@/pages/pagination/muti'], resolve) }
       },
+      children: [
+        {
+          path: '/muti1',
+          components: {
+            default: Timeout,
+            timeout: Timeout,
+            interval: Interval
+          },
+        }
+      ],
       name: 'muti',
       title: 'router-view命名视图'
     },

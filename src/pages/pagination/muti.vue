@@ -2,9 +2,9 @@
 <template>
   <div class=''>
     router-view页面
-    <interval></interval>
-    <router-view name="helper"></router-view>
-    <!-- <router-view name="timeout"></router-view> -->
+    <router-view name="default"></router-view>
+    <router-view name="interval"></router-view>
+    <router-view name="timeout"></router-view>
   </div>
 </template>
 
