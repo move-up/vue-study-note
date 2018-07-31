@@ -6,10 +6,10 @@
       <button @click="addNewItem(newItem)">确认</button>
       <ul>
       <h2>您的代办事项：</h2>
-        <a href="javascript:;" v-on:click="deleteAll" class="el-icon-delete">删除所有</a>
+        <a href="javascript:;" @click="deleteAll" class="el-icon-delete">删除所有</a>
         <li v-for="item in items" :key="item.label"  v-bind:class="{finished:item.isFinished}">
           {{ item.label }}
-          <a href="javascript:;" v-on:click="deleteOne"  class="el-icon-delete"></a>
+          <a href="javascript:;" @click="deleteOne"  class="el-icon-delete"></a>
         </li>
       </ul>
     </div>
@@ -30,7 +30,7 @@
   <div id="todo-list-example">
     <input
       v-model="newTodoText"
-      v-on:keyup.enter="addNewTodo"
+      @keyup.enter="addNewTodo"
       placeholder="Add a todo"
     >
     <ul>
@@ -38,15 +38,15 @@
         v-for="(todo, index) in todos"
         v-bind:key="todo.id"
         v-bind:title="todo.title"
-        v-on:remove="todos.splice(index, 1)"
+        @remove="todos.splice(index, 1)"
       >
       {{ index + 1 }} . <span class="todo-title" v-show="!todo.show">{{ todo.title }}</span>
       <span v-show="todo.show">
         <el-input v-model="todo.title"></el-input>
         <el-button type="primary" icon="el-icon-check" @click="handleMakeSure(index)">提交</el-button>
       </span>
-      <el-button data-a="你没有权限点击" type="primary" icon="el-icon-edit" v-on:click="handleWrite(index)">修改</el-button>
-      <el-button type="danger" icon="el-icon-delete" v-on:click="deleteOne">删除</el-button>
+      <el-button data-a="你没有权限点击" type="primary" icon="el-icon-edit" @click="handleWrite(index)">修改</el-button>
+      <el-button type="danger" icon="el-icon-delete" @click="deleteOne">删除</el-button>
       </li>
     </ul>
 

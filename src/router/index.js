@@ -61,18 +61,6 @@ const menuRouter = [
       title: 'render函数'
     },
     {
-      path: '/pagination',
-      component: resolve => { require(['@/pages/pagination/index'], resolve) },
-      name: 'pagination',
-      title: '分页'
-    },
-    {
-      path: '/carousel',
-      component: resolve => { require(['@/pages/carousel/index'], resolve) },
-      name: 'carousel',
-      title: '轮播'
-    },
-    {
       path: '/table',
       component: resolve => { require(['@/pages/tableEdite/index'], resolve) },
       name: 'table',
@@ -156,13 +144,41 @@ const elementRouter = [
       },
       children: [
         {
-          path: '/muti1',
+          path: '/muti/mutiPage1',
           components: {
             default: Timeout,
             timeout: Timeout,
             interval: Interval
-          },
-        }
+          }
+        },
+        {
+          path: '/muti/mutiPage2',
+          components: {
+            default: Interval,
+            // timeout: Timeout,
+            // interval: Interval
+          }
+        },
+        {
+          path: '/muti/mutiPage',
+          components: {
+            default: resolve => { require(['@/pages/pagination/mutiPage'], resolve) },
+            timeout: Timeout,
+            interval: Interval
+          }
+        },
+        {
+          path: '/carousel',
+          component: resolve => { require(['@/pages/carousel/index'], resolve) },
+          name: 'carousel',
+          title: '轮播'
+        },
+        {
+          path: '/pagination',
+          component: resolve => { require(['@/pages/pagination/index'], resolve) },
+          name: 'pagination',
+          title: '分页'
+        },
       ],
       name: 'muti',
       title: 'router-view命名视图'
@@ -205,30 +221,25 @@ const apiRouter = [
       name: 'api',
       title: '分页'
     },
-    {
-      path: '/api2',
-      component: resolve => { require(['@/pages/mock/api2'], resolve) },
-      name: 'api2',
-      title: ''
-    },
+    // {
+    //   path: '/api2',
+    //   component: resolve => { require(['@/pages/mock/api2'], resolve) },
+    //   name: 'api2',
+    //   title: ''
+    // },
     {
       path: '/routerPush',
       component: resolve => { require(['@/pages/mock/routerPush'], resolve) },
       name: 'routerPush',
       title: '路由传参'
     },
+    // 动态路径参数 以冒号开头
     {
       path: '/routerPush/detail/:userId',
       component: resolve => { require(['@/pages/mock/detail'], resolve) },
       name: 'detail',
       title: '详情页'
     },
-    // 动态路径参数 以冒号开头
-    /* {
-      path: '/api2/:id',
-      component: resolve => { require(['@/pages/mock/apiDetail'], resolve) },
-      name: '详情'
-    }, */
   ]}
 ]
 

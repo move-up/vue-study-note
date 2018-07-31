@@ -20,8 +20,8 @@
           <td>{{ human.work }}</td>
           <td>{{ human.hobby }}</td>
           <td>
-            <el-button type="danger" icon="el-icon-remove-outline" v-on:click="deleteOneLine(index)">删除</el-button>
-            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show" v-on:click="handleAddLine">添加</el-button>
+            <el-button type="danger" icon="el-icon-remove-outline" @click="deleteOneLine(index)">删除</el-button>
+            <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="human.show" @click="handleAddLine">添加</el-button>
           </td>
         </tr>
       </tbody>

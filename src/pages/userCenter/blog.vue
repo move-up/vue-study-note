@@ -4,10 +4,10 @@
       <div v-html="content"></div>
       <input
       v-bind:value="value"
-      v-on:input="$emit('input', $event.target.value)" >
-      <!-- <el-button type="primary" v-on:click="$emit('enlarge-text', 0.1)">Enlarge text</el-button> -->
-      <el-button type="primary" v-on:click="enLarge">Enlarge text</el-button>
-      <el-button type="primary" v-on:click="enMinu">EnMinu text</el-button>
+      @input="$emit('input', $event.target.value)" >
+      <!-- <el-button type="primary" @click="$emit('enlarge-text', 0.1)">Enlarge text</el-button> -->
+      <el-button type="primary" @click="enLarge">Enlarge text</el-button>
+      <el-button type="primary" @click="enMinu">EnMinu text</el-button>
       <div class="demo-alert-box">
         <strong>Error:</strong>
         <slot name="errorTip">{{ errorTipCon }}</slot>

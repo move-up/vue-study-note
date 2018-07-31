@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-      这是头部
+      <h1>这是头部</h1>
   </div>
 </template>
 
@@ -35,5 +35,11 @@
 </script>
 
 <style>
-
+.header {
+  line-height: 60px;
+}
+.header h1 {
+  margin: 0;
+  text-align: center;
+}
 </style>

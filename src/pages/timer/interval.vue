@@ -1,15 +1,16 @@
 <!--  -->
 <template>
   <div class=''>
+    <h4>Interval</h4>
     <div class='demo' :class="classes" @mouseover="handleMouseover" @mouseout="handleMouseout">
-      <span>interval 定时器i</span>
+      <span>interval</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'Interval',
 
   components: {},
 
@@ -34,7 +35,7 @@ export default {
   created () {},
 
   mounted () {
-    this.intervalId = window.setInterval(this.toggleShow, 1000)
+    this.intervalId = window.setInterval(this.toggleShow, 5000)
   },
 
   methods: {
@@ -60,6 +61,7 @@ export default {
   width: 100px;
   height: 100px;
   background-color: pink;
+  color: #fff;
 }
 .hide {
   display: none;

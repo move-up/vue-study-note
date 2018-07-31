@@ -459,34 +459,5 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
-i {
-  cursor: pointer;
-}
-.form table {
-  width: 100%;
-  tbody > tr {
-    td {
-      padding: 6px;
-      border: 1px solid #ccc;
-      background: #fafafa;
-      color: #333;
-      .el-input {
-        max-width: 200px;
-        text-align: left;
-        .el-input__inner {
-          height: 30px;
-          line-height: 30px;
-        }
-      }
-      .el-button {
-        padding: 5px 10px;
-        font-size: 12px;
-      }
-    }
-    td:last-of-type {
-      text-align: left;
-    }
-  }
-}
+<style lang='scss'>
 </style>

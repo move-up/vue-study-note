@@ -2,22 +2,21 @@
 <template>
   <div class=''>
     router-view页面
-    <router-view name="default"></router-view>
+    <router-link to="/muti/mutiPage1">tti 实际上：tit</router-link>
+    <router-link to="/muti/mutiPage2">iti 实际上：iit</router-link>
+    <router-link to="/muti/mutiPage">iti 实际上：iit</router-link>
     <router-view name="interval"></router-view>
     <router-view name="timeout"></router-view>
+    <router-view name="default"></router-view>
   </div>
 </template>
 
 <script>
-import Interval from '@/pages/timer/interval'
-// import Timeout from '@/pages/timer/timeout'
 
 export default {
   name: '',
 
   components: {
-    Interval,
-    // Timeout
   },
 
   props: {},

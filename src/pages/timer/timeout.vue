@@ -1,15 +1,16 @@
 <!--  -->
 <template>
   <div class=''>
+    <h4>Timeout</h4>
     <div class='demo' :class="classes" @mouseover="handleMouseover" @mouseout="handleMouseout">
-      <span>timeout 定时器t</span>
+      <span>timeout</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: '',
+  name: 'Timeout',
 
   components: {},
 
@@ -54,7 +55,7 @@ export default {
     },
 
     timeout () {
-      this.timeoutId = window.setTimeout(this.toggleShow, 1000)
+      this.timeoutId = window.setTimeout(this.toggleShow, 5000)
     }
   }
 }
@@ -64,7 +65,8 @@ export default {
 .demo {
   width: 100px;
   height: 100px;
-  background-color: pink;
+  background-color: red;
+  color: #fff;
 }
 .hide {
   display: none;

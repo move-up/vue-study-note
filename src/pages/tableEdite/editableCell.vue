@@ -8,7 +8,7 @@
         :key="_index">
         <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="String(id) + (index + 1) + key"></el-input>
         <el-checkbox v-else-if="opt.type === 'checkbox'" v-model="opt.value" :name="`${String(id) + (index + 1) + key}`"></el-checkbox>
-        <el-button v-if="(index === 0 && _index === 0 && canAdd)" type="primary" icon="el-icon-circle-plus-outline" v-on:click="$emit('add')">添加</el-button>
+        <el-button v-if="(index === 0 && _index === 0 && canAdd)" type="primary" icon="el-icon-circle-plus-outline" @click="$emit('add')">添加</el-button>
         <template v-else>
           {{ opt.value }}
         </template>
@@ -16,18 +16,18 @@
       <td>
         <!-- 只有一行 -->
         <template v-if="index === 0 && cols.length === 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="false" v-on:click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="false" @click="deleteOneLine(index)">删除</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine">添加</el-button>
         </template>
         <!-- 中间行数 -->
         <template v-else-if="index > 0 && index !== cols.length - 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)">删除</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  @click="handleAddLine">添加</el-button>
         </template>
         <!-- 最后一行 -->
         <template v-else-if="index > 0 && index === cols.length - 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)">删除</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine">添加</el-button>
         </template>
       </td>
     </tr>

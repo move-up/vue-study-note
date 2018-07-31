@@ -2,61 +2,35 @@
 <template>
   <div class='layout-sidebar'>
     <el-menu
+      :unique-opened="true"
       default-active="2"
       class="el-menu-vertical-demo"
       @open="handleOpen"
-      @close="handleClose"
-      background-color="#545c64"
-      text-color="#fff"
-      active-text-color="#ffd04b">
-      <el-submenu index="1">
+      @close="handleClose">
+
+      <el-submenu
+      v-for="(menu, i) in menus"
+      :key="i"
+      :index="String(i + 1)">
         <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航一</span>
+          <i
+          :class="menu.baseIcon"></i>
+          <span>{{ menu.baseTitle }}</span>
         </template>
+
         <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
+          <el-menu-item v-for="(item, _key) in menu.items"
+          :key="_key"
+          :index="String((i + 1) + '-' + (_key + 1))">
+            <i
+            :class="item.icon"></i>
+            <router-link
+            :to="item.path">{{ item.title }}</router-link>
+          </el-menu-item>
         </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
+
       </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title">导航二</span>
-      </el-menu-item>
-      <el-menu-item index="3">
-        <i class="el-icon-document"></i>
-        <span slot="title">导航三</span>
-      </el-menu-item>
-      <el-menu-item index="4">
-        <i class="el-icon-setting"></i>
-        <span slot="title">导航四</span>
-      </el-menu-item>
-      <el-submenu index="5">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航555</span>
-        </template>
-        <el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="5-1">选项1</el-menu-item>
-          <el-menu-item index="5-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="5-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="5-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="5-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
+
     </el-menu>
   </div>
 </template>
@@ -71,6 +45,117 @@ export default {
 
   data () {
     return {
+      menus: [
+        {
+          baseIcon: 'el-icon-setting',
+          baseTitle: '实例',
+          items: [
+            {
+              icon: 'el-icon-document',
+              path: '/home',
+              title: '主页'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/typeof',
+              title: '判断数据类型'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/timer',
+              title: '定时器'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/render',
+              title: 'render函数'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/table',
+              title: '编辑表格'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/todolist',
+              title: 'todolist'
+            },
+          ]
+        },
+        {
+          baseIcon: 'el-icon-setting',
+          baseTitle: '饿了么组件',
+          items: [
+            {
+              icon: 'el-icon-document',
+              path: '/tab',
+              title: '标签页'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/breadCrumb',
+              title: '面包屑'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/carousel',
+              title: '轮播'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/pagination',
+              title: '分页'
+            },
+          ]
+        },
+        {
+          baseIcon: 'el-icon-setting',
+          baseTitle: 'mock接口',
+          items: [
+            {
+              icon: 'el-icon-document',
+              path: '/api',
+              title: '分页'
+            },
+            // {
+            //   icon: 'el-icon-document',
+            //   path: '/api2',
+            //   title: ''
+            // },
+            {
+              icon: 'el-icon-document',
+              path: '/routerPush',
+              title: '路由传参'
+            }
+          ]
+        },
+        {
+          baseIcon: 'el-icon-setting',
+          baseTitle: '命名视图',
+          items: [
+            {
+              icon: 'el-icon-document',
+              path: '/muti',
+              title: '主页'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/muti/mutiPage',
+              title: '有路由子页面'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/muti/mutiPage1',
+              title: '无路由子页面'
+            },
+            {
+              icon: 'el-icon-document',
+              path: '/muti/mutiPage2',
+              title: '无路由子页面'
+            },
+          ]
+        },
+      ]
     }
   },
 
@@ -94,4 +179,14 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+.el-menu-item-group .el-menu-item-group__title {
+  height: 0!important;
+}
+.el-menu-item a {
+  text-decoration: none;
+  color: #999;
+}
+.el-menu-item.is-active a {
+  color: #409EFF;
+}
 </style>

@@ -4,7 +4,7 @@
     class="ict-item-questionnaire"
     :disabled="disabled"
     :class="{'ict-item-disabled':disabled, 'ict-item-active': btnActive}"
-    v-on:click="onTap">
+    @click="onTap">
     {{ title }}
   </div>
 </template>

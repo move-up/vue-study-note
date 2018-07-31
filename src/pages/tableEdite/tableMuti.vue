@@ -1,7 +1,8 @@
 <!--  -->
 <template>
+<table>
   <tbody>
-    <tr v-for="(col, index) in _colsList" :key="index">
+    <tr v-for="(col, index) in cols" :key="index">
       <td
         v-for="(opt, key, _index) in col"
         :rowspan="(index === 0 && _index === 0) ? cols.length : 1"
@@ -15,40 +16,218 @@
       <td>
         <!-- 只有一行 -->
         <template v-if="index === 0 && cols.length === 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="false" v-on:click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="false" @click="deleteOneLine(index)">删除</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine">添加</el-button>
         </template>
         <!-- 中间行数 -->
         <template v-else-if="index > 0 && index !== cols.length - 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  v-on:click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)">删除</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  @click="handleAddLine">添加</el-button>
         </template>
         <!-- 最后一行 -->
         <template v-else-if="index > 0 && index === cols.length - 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" v-on:click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  v-on:click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)">删除</el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine">添加</el-button>
         </template>
       </td>
     </tr>
   </tbody>
+</table>
 </template>
 
 <script>
 export default {
-  name: 'EditableCell',
+  name: '',
 
   components: {},
 
   props: {
-    cols: {
-      type: [Array],
-      required: true
-    }
   },
 
   data () {
     return {
-      _colsList: []
+      cols: [
+        {
+          one: {
+            value: '',
+            type: 'input'
+          },
+          two: {
+            value: '',
+            type: 'input'
+          },
+          three: {
+            value: '',
+            type: 'checkbox'
+          },
+          four: {
+            value: '',
+            type: 'checkbox'
+          },
+          five: {
+            value: '',
+            type: 'checkbox'
+          },
+          six: {
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
+          },
+          num: {
+            value: 1,
+            type: 'text'
+          },
+          // colsAddShow: false,
+          // colsDeleteShow: false,
+        },
+        {
+          two: {
+            value: '',
+            type: 'input'
+          },
+          three: {
+            value: '',
+            type: 'checkbox'
+          },
+          four: {
+            value: '',
+            type: 'checkbox'
+          },
+          five: {
+            value: '',
+            type: 'checkbox'
+          },
+          six: {
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
+          },
+          num: {
+            value: 2,
+            type: 'text'
+          },
+        },
+        {
+          two: {
+            value: '',
+            type: 'input'
+          },
+          three: {
+            value: '',
+            type: 'checkbox'
+          },
+          four: {
+            value: '',
+            type: 'checkbox'
+          },
+          five: {
+            value: '',
+            type: 'checkbox'
+          },
+          six: {
+            value: '',
+            type: 'checkbox'
+          },
+          seven: {
+            value: '',
+            type: 'checkbox'
+          },
+          eight: {
+            value: '',
+            type: 'checkbox'
+          },
+          ten: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneOne: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneTwo: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneThree: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFour: {
+            value: '',
+            type: 'checkbox'
+          },
+          oneFive: {
+            value: '',
+            type: 'checkbox'
+          },
+          num: {
+            value: 3,
+            type: 'text'
+          },
+        },
+      ],
     }
   },
 

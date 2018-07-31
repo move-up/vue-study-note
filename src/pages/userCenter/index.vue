@@ -37,7 +37,7 @@
         <input-box
         :label="rlabel"
         v-model="rname"
-        v-on:focus.native="onFocus"
+        @focus.native="onFocus"
         ></input-box>
         <p>你输入的值：{{ rname }}</p>
 
@@ -47,7 +47,7 @@
             <blog
             :title="bo.title"
             :content="bo.content"
-            v-on:enlarge-text="onEnlargeText"
+            @enlarge-text="onEnlargeText"
             v-model="searchText"
             :errorTipCon="bo.errorTipCon">
             </blog>

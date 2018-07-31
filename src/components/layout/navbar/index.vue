@@ -77,6 +77,8 @@ export default {
   height: 50px;
   line-height: 50px;
   border-radius: 0px !important;
+  background-color: #383d41;
+  color: #fff;
 
   .right-menu {
     float: right;
