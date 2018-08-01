@@ -33,13 +33,6 @@
       <h2>组件myCounter：</h2>
       <my-counter :value="val"></my-counter>
 
-      <h2>组件InputBox：</h2>
-        <input-box
-        :label="rlabel"
-        v-model="rname"
-        @focus.native="onFocus"
-        ></input-box>
-        <p>你输入的值：{{ rname }}</p>
 
 
       <h2>组件blog：</h2>
@@ -52,6 +45,13 @@
             :errorTipCon="bo.errorTipCon">
             </blog>
         </div> -->
+      <h2>组件InputBox：</h2>
+        <input-box
+        :label="rlabel"
+        v-model="rname"
+        @focus.native="onFocus"
+        ></input-box>
+        <p>你输入的值：{{ rname }}</p>
   </div>
 </template>
 

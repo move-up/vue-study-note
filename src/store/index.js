@@ -5,16 +5,16 @@ import getters from './getters'
 
 Vue.use(Vuex)
 
-export default new Vuex.Store({
-  strict: process.env.NODE_ENV !== 'production', //在非生产环境下，使用严格模式
-  getters,
-  modules: {
-    user
-  }
-})
+// export default new Vuex.Store({
+//   strict: process.env.NODE_ENV !== 'production', //在非生产环境下，使用严格模式
+//   getters,
+//   modules: {
+//     user
+//   }
+// })
 
 
-/*  const store = new Vuex.Store({
+ const store = new Vuex.Store({
 
   strict: process.env.NODE_ENV !== 'production', //在非生产环境下，使用严格模式
   getters,
@@ -24,11 +24,9 @@ export default new Vuex.Store({
   state: {
     count: 0
   },
-  mutations: {
-    increment (state) {
-      state.count++
-      state.count++
-    }
+  mutations (state) {
+    increment: state => state.count++;
+    decrement: state => state.count--
   }
  })
 
@@ -36,4 +34,4 @@ export default new Vuex.Store({
 
  store.commit('increment')
 
-console.log(store.state.count) */
+console.log(store.state.count)

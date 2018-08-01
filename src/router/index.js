@@ -1,10 +1,11 @@
+// 0. 使用模块化机制编程，导入Vue和VueRouter，要调用 0-2 Vue.use（Router）
 import Vue from 'vue'
 import Router from 'vue-router'
 import store from '@/store/index'//全局状态管理
 import Cookies from 'js-cookie'
 
 
-
+// 1. 定义（路由）组件，可以从其他文件import进来
 import Layout from '@/components/Layout'
 import Main from '@/components/main'
 
@@ -13,8 +14,10 @@ const Home = () => import('@/pages/home/index')
 const Interval = () => import('@/pages/timer/interval')
 const Timeout = () => import('@/pages/timer/timeout')
 
+// 0-2 调用
 Vue.use(Router)
 
+// 2. 定义路由 每个路由映射一个组件
 const defaultRouter = [
     //登录
     {
@@ -243,6 +246,7 @@ const apiRouter = [
   ]}
 ]
 
+// 3. 创建router实例，然后传`routes`配置
 const router =  new Router({
   routes: [...defaultRouter, ...menuRouter, ...complateRouter, ...elementRouter, ...apiRouter]
 })
@@ -261,6 +265,7 @@ router.beforeEach(({ meta, path, name }, from, next) => {
   next()
 })
 
+// 4. 导出路由
 export default router
 
 /*router.beforeEach((to,from,next) =>{ //路由跳转之前的拦截 to:将要跳转去的route; from:从该route跳转；next: 继续跳转
