@@ -95,6 +95,12 @@ const menuRouter = [
     component: resolve => { require(['@/pages/todolist/index'], resolve) },
     title: 'todolist'
   },
+  {
+    path: '/todolist2',
+    name: 'todolist2',
+    component: resolve => { require(['@/pages/todolist/todolist2'], resolve) },
+    title: 'todolist2'
+  },
 ]
 //小模板
 const complateRouter = [
