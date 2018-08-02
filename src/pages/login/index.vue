@@ -53,9 +53,9 @@
       }
     },
     computed: {
-      count () {
-        console.log(this.$store.state.count + '...')
-      }
+      // count () {
+      //   console.log(this.$store.state.count + '...')
+      // }
     },
     watch: {
     },
