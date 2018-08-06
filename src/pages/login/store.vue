@@ -5,9 +5,6 @@
     <a href="javascript:;"
     @click="handleShow">点击</a>
 
-    <!-- 2.直接提交mutations -->
-    <!-- @click="$store.commit('switch_dialog')">点击</a> -->
-
     <t-dialog></t-dialog>
 
     <input v-model="message" class="message"> {{ 'message:' + message}}

@@ -41,8 +41,8 @@ export default {
         return this.$store.state.inputData.inputValue
       },
       set (value) {
-        this.$store.dispatch('updateValue', value)
-        // this.$store.commit('updateValue', value)
+        // this.$store.dispatch('updateValue', value)
+        this.$store.commit('updateValue', value)
       }
     }
   },

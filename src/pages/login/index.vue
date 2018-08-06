@@ -29,7 +29,6 @@
   export default {
     name: '',
     components: {
-
     },
     props: {
     },
@@ -53,9 +52,6 @@
       }
     },
     computed: {
-      // count () {
-      //   console.log(this.$store.state.count + '...')
-      // }
     },
     watch: {
     },
@@ -63,7 +59,6 @@
     created () {
     },
     mounted () {
-
     },
     methods: {
       ...mapActions([USER_SIGNIN]),

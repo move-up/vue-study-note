@@ -80,6 +80,11 @@ export default {
               path: '/todolist',
               title: 'todolist'
             },
+            {
+              icon: 'el-icon-document',
+              path: '/store',
+              title: 'store'
+            },
           ]
         },
         {
