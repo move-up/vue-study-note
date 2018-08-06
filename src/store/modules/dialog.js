@@ -2,14 +2,14 @@ export default {
   state: {
     show:false
   },
-  getters: {
-    not_show (state) {
-      return !state.show
-    }
-  },
+  // getters: {
+  //   not_show (state) {
+  //     return !state.show
+  //   }
+  // },
   mutations: {
     switch_dialog (state) {
-      state.show = state.show ? false : true
+      state.show = !state.show
     }
   },
   actions: {

@@ -3,25 +3,51 @@
   <div class="storeWrap">
     store
     <a href="javascript:;"
-    @click="$store.commit('switch_dialog')">点击</a>
+    @click="handleShow">点击</a>
 
-    <a href="javascript:;"
-    @click="doSomething">点击</a>
+    <!-- 2.直接提交mutations -->
+    <!-- @click="$store.commit('switch_dialog')">点击</a> -->
 
     <t-dialog></t-dialog>
+
+    <input v-model="message" class="message"> {{ 'message:' + message}}
+
+
   </div>
 </template>
 
 <script>
 import dialog from './dialog.vue'
+import { mapActions, mapState } from 'vuex'
+
 export default {
+  data () {
+    return {
+    }
+  },
   components:{
-    "t-dialog":dialog
+    "t-dialog": dialog,
+  },
+  computed: {
+    ...mapState({
+      message: state => state.obj.message
+    }),
+    ...mapActions({
+      updateMessage: 'updateMessage'
+    }),
+    message: {
+      get () {
+        return this.$store.state.inputData.message
+      },
+      set (value) {
+        this.$store.commit('updateMessage', value)
+      }
+    }
   },
   methods: {
-    doSomething () {
-      console.log(this.$store.state.dialog)
-    }
+    ...mapActions({
+      handleShow: 'switch_dialog'
+    }),
   }
 }
 </script>
