@@ -67,18 +67,38 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+$higtlight-color: #f90;
+$border: 1px solid #f90;
+@mixin rounded-corners {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  color: #fff;
+}
+@mixin link-colors(
+    $normal,
+    $hover: $normal,
+    $visited: $normal
+  )
+{
+  color: $normal;
+  &:hover { color: $hover; }
+  &:visited { color: $visited; }
+}
 .left-menua {
   display: inline-block;
   margin: 0px;
   font-size: 25px;
   padding-left: 10px;
+  @include link-colors(#f90,blue,pink)
 }
 .layout-navbar {
   height: 50px;
   line-height: 50px;
   border-radius: 0px !important;
   background-color: #383d41;
-  color: #fff;
+  color: $higtlight-color;
+  border: $border;
 
   .right-menu {
     float: right;
@@ -109,7 +129,8 @@ export default {
         .user-avatar {
           width: 40px;
           height: 40px;
-          border-radius: 10px;
+          // border-radius: 10px;
+          @include rounded-corners;
         }
         .el-icon-caret-bottom {
           position: absolute;

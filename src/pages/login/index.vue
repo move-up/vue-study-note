@@ -11,7 +11,6 @@
         <el-form-item label="密码" prop="pw">
           <el-input type="password" v-model="user.pw" placeholder="请输入密码"></el-input>
         </el-form-item>
-        {{ count }}
         <div class="clearfix">
           <el-button class="f-r" native-type='submit' @click="handleLogin">登录</el-button>
         </div>
