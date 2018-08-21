@@ -2,8 +2,9 @@
 <template>
 <div>
   <el-upload
-    action="https://jsonplaceholder.typicode.com/posts/"
+    action="https://httpbin.org/post"
     list-type="picture-card"
+    accept=".png, .jpg, .gif, .txt"
     :on-preview="handlePictureCardPreview"
     :on-remove="handleRemove">
     <i class="el-icon-plus"></i>
@@ -51,10 +52,20 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
-.el-upload-list--picture-card .el-upload-list__item .el-upload-list__item-thumbnail {
-  width: auto;
-  height: 148px;
-  margin: 0 auto;
+<style lang='scss'>
+.el-upload-list.el-upload-list--picture-card .el-upload-list__item .el-upload-list__item-thumbnail,
+.el-upload-list.el-upload-list--picture-card .el-upload-list__item {
+  width: 100px;
+  height: 100px;
+}
+.el-upload.el-upload--picture-card {
+  width: 100px;
+  height: 100px;
+  line-height: 98px;
+}
+.el-upload-list--picture-card .el-progress,
+.el-upload-list--picture-card .el-progress-circle {
+  width: 78px!important;
+  height: 78px!important;
 }
 </style>
