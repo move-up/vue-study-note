@@ -216,6 +216,12 @@ const elementRouter = [
       name: 'tab',
       title: '标签页'
     },
+    {
+      path: '/upload',
+      component: resolve => { require(['@/pages/element/upload'], resolve) },
+      name: 'upload',
+      title: '上传'
+    },
   ]}
 ]
 //api

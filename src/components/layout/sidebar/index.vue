@@ -111,6 +111,11 @@ export default {
               path: '/pagination',
               title: '分页'
             },
+            {
+              icon: 'el-icon-document',
+              path: '/upload',
+              title: '上传'
+            },
           ]
         },
         {

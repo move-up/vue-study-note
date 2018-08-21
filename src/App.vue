@@ -13,7 +13,12 @@ export default {
 </script>
 
 <style lang="scss">
-@import './styles/index.scss'; // 全局自定义的css样式
+// 全局自定义的css样式
+// 其中引用关系以这个文件为起点
+// 去找资源
+// 如/static/img/login_bg.png
+// 就为 ../static/img/login_bg.png
+@import './styles/index.scss';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
