@@ -14,7 +14,7 @@
           v-for="(content, index) in contents"
           :key="index">
             <template slot="title">
-              <h4 class="pll-left">{{ content.title }} ({{ contents[index].length }})</h4>
+              <h4 class="pll-left" :data-id="content.id">{{ content.title }} ({{ contents[index].length }})</h4>
               <span class="pull-right btn-group">
                 <el-button type="text" size="mini" @click.stop="handleAddOne(index)">
                   add
@@ -101,7 +101,7 @@ export default {
           ]
         },
         {
-          id: 1,
+          id: 3,
           title: "3 产品知识库",
           length: 2,
           children: [
@@ -126,12 +126,12 @@ export default {
       console.log(i)
       this.contents[i].length ++
       const newId = Number(String(i + 1) + String(this.contents[i].length))
-      const newItem = {id: newId, title: newId + '.new item' }
+      const newItem = [{id: newId, title: newId + '.new item' }]
       this.contents[i].children.push(...newItem)
     },
     handleAddMuti () {
-      let newId = this.contents.length - 1
-      newId = this.contents[newId].id + 1
+      // let newId = this.contents.length - 1
+      const newId = this.contents[this.contents.length - 1].id + 1
       console.log(newId)
       const newMutiItem = {id:newId, title: newId + ' newMutiItem', length: 0, children: []}
       this.contents.push(newMutiItem)
