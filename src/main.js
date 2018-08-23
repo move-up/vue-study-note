@@ -9,11 +9,18 @@ import _ from 'lodash'
 import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
+import iView from 'iview';
+import 'iview/dist/styles/iview.css';
+
 window._ = _
 
 //import ECharts from 'vue-echarts/components/ECharts'
 
 Vue.use(Element)
+Vue.use(iView, {
+  transfer: true,
+  size: 'large'
+});
 
 //Vue.component('chart', ECharts)
 

@@ -222,6 +222,18 @@ const elementRouter = [
       name: 'upload',
       title: '上传'
     },
+    {
+      path: '/tree',
+      component: resolve => { require(['@/pages/element/tree'], resolve) },
+      name: 'tree',
+      title: '树形菜单'
+    },
+    {
+      path: '/collapse',
+      component: resolve => { require(['@/pages/element/collapse'], resolve) },
+      name: 'tree',
+      title: '折叠面板'
+    },
   ]}
 ]
 //api
