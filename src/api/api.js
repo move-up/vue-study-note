@@ -50,3 +50,10 @@ export const getArticleDetail = (params) => {
       .get("http://jsonplaceholder.typicode.com/posts", { params })
       .then(res => res.data)
 };
+
+export const getArticleList2 = (params) => {
+  //params是参数对象，qs会对参数对象进行处理
+  return axios
+      .get("@/api/article.json", qs.stringify(params))
+      .then(res => res.data)
+};

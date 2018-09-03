@@ -114,6 +114,11 @@
               table表格
           </router-link>
         </div>
+        <div class="item">
+          <router-link @click="get" title="table">
+              table表格
+          </router-link>
+        </div>
       </div>
     </div>
 
@@ -123,6 +128,8 @@
 </template>
 
 <script>
+import { getArticleList2 } from "@/api/api"
+
 import Add from './add'
   export default {
     name: '',
@@ -133,6 +140,7 @@ import Add from './add'
     },
     data () {
       return {
+        articleList: [],
       }
     },
     computed: {
@@ -142,13 +150,19 @@ import Add from './add'
 
     },
     created () {
-
+      let p = {}
+      getArticleList2(p).then(res =>{
+        this.articleList2 = res
+        console.log(articleList2)
+      })
     },
     mounted () {
 
     },
     methods: {
-
+      get(){
+        console.log(articleList2)
+      }
     }
   }
 </script>

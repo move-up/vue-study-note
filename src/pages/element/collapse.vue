@@ -42,11 +42,25 @@
               </span>
             </div>
           </el-collapse-item>
+          <el-collapse-item title="效率 Efficiency" name="3">
+            <div>清晰明确：语言表达清晰且表意明确，让用户快速理解进而作出决策；</div>
+            <div>帮助用户识别：界面简单直白，让用户快速识别而非回忆，减少用户记忆负担。</div>
+            <div>
+              <el-collapse accordion>
+                <el-collapse-item title="31 效率31313113" name="31">
+                  <div>fjdsfjslfjsf</div>
+                  <div>2222fdsfjosfjsdlfjds</div>
+                </el-collapse-item>
+              </el-collapse>
+            </div>
+          </el-collapse-item>
         </el-collapse>
       </div>
     </el-aside>
     <el-container>
-      <el-main>Main</el-main>
+      <el-main>
+        mainContent
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -107,11 +121,11 @@ export default {
           children: [
             {
               id: 31,
-              title: "21.方案1"
+              title: "31.方案1"
             },
             {
               id: 32,
-              title: "22.方案2"
+              title: "32.方案2"
             }
           ]
         }
@@ -123,16 +137,14 @@ export default {
       console.log(el.target);
     },
     handleAddOne (i) {
-      console.log(i)
       this.contents[i].length ++
-      const newId = Number(String(i + 1) + String(this.contents[i].length))
+      const a = this.contents[i].length - 2  //获取最后一项id
+      const newId = this.contents[i].children[a].id + 1
       const newItem = [{id: newId, title: newId + '.new item' }]
       this.contents[i].children.push(...newItem)
     },
     handleAddMuti () {
-      // let newId = this.contents.length - 1
       const newId = this.contents[this.contents.length - 1].id + 1
-      console.log(newId)
       const newMutiItem = {id:newId, title: newId + ' newMutiItem', length: 0, children: []}
       this.contents.push(newMutiItem)
     },
@@ -142,7 +154,6 @@ export default {
     handleRemoveOne(i1, i2) {
       this.contents[i1].length = this.contents[i1].length - 1
       this.contents[i1].children.splice(i2, 1)
-      // console.log(222);
     },
     handleRemoveMuti(i) {
       this.contents.splice(i, 1)
