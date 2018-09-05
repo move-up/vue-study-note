@@ -114,11 +114,6 @@
               table表格
           </router-link>
         </div>
-        <div class="item">
-          <router-link @click="get" title="table">
-              table表格
-          </router-link>
-        </div>
       </div>
     </div>
 
@@ -140,7 +135,6 @@ import Add from './add'
     },
     data () {
       return {
-        articleList: [],
       }
     },
     computed: {
@@ -152,8 +146,7 @@ import Add from './add'
     created () {
       let p = {}
       getArticleList2(p).then(res =>{
-        this.articleList2 = res
-        console.log(articleList2)
+        console.log(res)
       })
     },
     mounted () {
@@ -161,7 +154,7 @@ import Add from './add'
     },
     methods: {
       get(){
-        console.log(articleList2)
+        console.log(222)
       }
     }
   }

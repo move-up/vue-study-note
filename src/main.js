@@ -10,17 +10,15 @@ import Element from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css';
 
 import iView from 'iview';
-import 'iview/dist/styles/iview.css';
+import locale from 'iview/dist/locale/en-US';
+import 'iview/dist/styles/iview.css'
 
 window._ = _
 
 //import ECharts from 'vue-echarts/components/ECharts'
 
 Vue.use(Element)
-Vue.use(iView, {
-  transfer: true,
-  size: 'large'
-});
+Vue.use(iView, { locale });
 
 //Vue.component('chart', ECharts)
 

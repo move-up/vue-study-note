@@ -4,6 +4,7 @@ import user from './modules/user'
 import dialog from './modules/dialog'
 import increment from './modules/increment'
 import inputData from './modules/inputData'
+import add from './modules/add'
 import getters from './getters'
 
 Vue.use(Vuex)
@@ -15,7 +16,8 @@ export default new Vuex.Store({
     user,
     dialog, //后面的属性值dialog对应文件名dialog
     increment,
-    inputData
+    inputData,
+    add: add,
   },
 })
 

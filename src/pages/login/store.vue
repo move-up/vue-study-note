@@ -8,6 +8,8 @@
     <t-dialog></t-dialog>
 
     <input v-model="message" class="message"> {{ 'message:' + message}}
+    <h4>num: {{ this.$store.state.add.count }}</h4>
+
 
 
   </div>
@@ -44,7 +46,8 @@ export default {
   methods: {
     ...mapActions({
       handleShow: 'switch_dialog'
-    }),
+    })
   }
 }
+
 </script>

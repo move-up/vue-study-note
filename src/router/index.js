@@ -31,7 +31,11 @@ const defaultRouter = [
       path: '/store',
       name: 'store',
       component: resolve => { require(['@/pages/login/store'], resolve) }
-
+    },
+    {
+      path: '/store-add',
+      name: 'store-add',
+      component: resolve => { require(['@/pages/login/add'], resolve) }
     }
 ]
 

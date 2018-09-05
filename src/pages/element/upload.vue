@@ -2,7 +2,7 @@
 <template>
 <div>
   <!-- 上传图片 -->
-  <!-- <el-upload
+  <el-upload
     action="https://httpbin.org/post"
     list-type="picture-card"
     accept=".png, .jpg, .gif, .txt"
@@ -12,9 +12,9 @@
   </el-upload>
   <el-dialog :visible.sync="dialogVisible">
     <img width="100%" :src="dialogImageUrl" alt="">
-  </el-dialog> -->
+  </el-dialog>
   <!-- 上传文件 -->
-  <el-upload
+  <!-- <el-upload
     class="upload-demo"
     action="https://httpbin.org/post"
     :on-preview="handlePreview"
@@ -25,7 +25,7 @@
     :file-list="fileList">
     <el-button size="small" type="primary">点击上传</el-button>
     <div slot="tip" class="el-upload__tip">只能上传jpg/png文件，且不超过500kb</div>
-  </el-upload>
+  </el-upload> -->
 </div>
 </template>
 

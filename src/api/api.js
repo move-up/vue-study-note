@@ -2,7 +2,7 @@
 //1.导入axios包
 import axios from 'axios'
 //2.设置基础路径
-axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5b34eb92ebbfd9014ce9ece4/api'; //
+// axios.defaults.baseURL = 'https://www.easy-mock.com/mock/5b34eb92ebbfd9014ce9ece4/api'; //
 //3.引入参数处理模块
 let qs = require('qs');
 //声明一个名字为getNewsList的函数,params值函数中的参数
@@ -17,14 +17,21 @@ let qs = require('qs');
 export const getFriendsList = (params) => {
     //params是参数对象，qs会对参数对象进行处理
     return axios
-        .get("/friends/list", qs.stringify(params))
+        .get("https://www.easy-mock.com/mock/5b34eb92ebbfd9014ce9ece4/api/friends/list", qs.stringify(params))
         .then(res => res.data)
 };
 
 export const getTableListByPage = (params) => {
   //params是参数对象，qs会对参数对象进行处理
   return axios
-      .get("/table/pagelist", qs.stringify(params))
+      .get("https://www.easy-mock.com/mock/5b34eb92ebbfd9014ce9ece4/api/table/pagelist", qs.stringify(params))
+      .then(res => res.data)
+};
+
+export const getAddLength = (params) => {
+  //params是参数对象，qs会对参数对象进行处理
+  return axios
+      .get("https://www.easy-mock.com/mock/5a168608b38a3c5b4c7a7163/example/plusnum", qs.stringify(params))
       .then(res => res.data)
 };
 
@@ -54,6 +61,6 @@ export const getArticleDetail = (params) => {
 export const getArticleList2 = (params) => {
   //params是参数对象，qs会对参数对象进行处理
   return axios
-      .get("@/api/article.json", qs.stringify(params))
+      .get("/src/api/article.json")    //当文件为json文件时，一定要写绝对地址
       .then(res => res.data)
 };
