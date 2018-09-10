@@ -28,9 +28,6 @@ export default {
     "t-dialog": dialog,
   },
   computed: {
-    ...mapState({
-      message: state => state.obj.message
-    }),
     ...mapActions({
       updateMessage: 'updateMessage'
     }),
@@ -49,5 +46,6 @@ export default {
     })
   }
 }
+
 
 </script>

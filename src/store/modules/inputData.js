@@ -1,5 +1,6 @@
 import Cookies from 'js-cookie'
 
+// 这里面是两个input组件
 export default {
   state: {
     inputValue: Cookies.get('inputValue')

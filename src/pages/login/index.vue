@@ -4,7 +4,12 @@
       <div slot="header" class="clearfix">
         <span>登录</span>
       </div>
-      <el-form ref="form" @submit.native.prevent @keyup.enter="handleLogin" :rules="rules" :model="user" label-width="80px">
+      <el-form ref="form"
+      @submit.native.prevent
+      @keyup.enter="handleLogin"
+      :rules="rules"
+      :model="user"
+      label-width="80px">
         <el-form-item label="用户名" prop="name">
           <el-input v-model="user.name" placeholder="请输入用户名"></el-input>
         </el-form-item>
@@ -26,11 +31,6 @@
   import { Loading } from 'element-ui'
 
   export default {
-    name: '',
-    components: {
-    },
-    props: {
-    },
     data () {
       return {
         user: {
@@ -49,15 +49,6 @@
           ]
         }
       }
-    },
-    computed: {
-    },
-    watch: {
-    },
-    /* vue实例刚刚创建的一瞬间触发 */
-    created () {
-    },
-    mounted () {
     },
     methods: {
       ...mapActions([USER_SIGNIN]),
