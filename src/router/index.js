@@ -282,7 +282,7 @@ const apiRouter = [
 
 // 3. 创建router实例，然后传`routes`配置
 const router =  new Router({
-  mode: 'history',
+  // mode: 'history',
   routes: [...defaultRouter, ...menuRouter, ...complateRouter, ...elementRouter, ...apiRouter]
 })
 
