@@ -38,7 +38,7 @@ export const getAddLength = (params) => {
 export const getTableListPage = (params) => {
   //params是参数对象，qs会对参数对象进行处理
   return axios
-      .get("http://www.xg_wh.com/Home/Ceshi/get_films", { params })
+      .get("https://www.xg_wh.com/Home/Ceshi/get_films", { params })
       .then(res => res.data)
       // .get(`http://www.xg_wh.com/Home/Ceshi/get_films`)
       // .then(res => res.data)
@@ -47,14 +47,14 @@ export const getTableListPage = (params) => {
 export const getArticleList = (params) => {
   //params是参数对象，qs会对参数对象进行处理
   return axios
-      .get("http://jsonplaceholder.typicode.com/posts", qs.stringify(params))
+      .get("https://jsonplaceholder.typicode.com/posts", qs.stringify(params))
       .then(res => res.data)
 };
 
 export const getArticleDetail = (params) => {
   //params是参数对象，qs会对参数对象进行处理
   return axios
-      .get("http://jsonplaceholder.typicode.com/posts", { params })
+      .get("https://jsonplaceholder.typicode.com/posts", { params })
       .then(res => res.data)
 };
 
