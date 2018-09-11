@@ -123,7 +123,6 @@
 </template>
 
 <script>
-import { getArticleList2 } from "@/api/api"
 
 import Add from './add'
   export default {
@@ -144,10 +143,6 @@ import Add from './add'
 
     },
     created () {
-      let p = {}
-      getArticleList2(p).then(res =>{
-        console.log(res)
-      })
     },
     mounted () {
 

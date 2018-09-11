@@ -22,10 +22,11 @@
           <el-menu-item v-for="(item, _key) in menu.items"
           :key="_key"
           :index="String((i + 1) + '-' + (_key + 1))">
-            <i
-            :class="item.icon"></i>
             <router-link
-            :to="item.path">{{ item.title }}</router-link>
+            :to="item.path">
+              <i :class="item.icon"></i>
+              <span>{{ item.title }}</span>
+            </router-link>
           </el-menu-item>
         </el-menu-item-group>
 
@@ -193,10 +194,15 @@ export default {
   height: 0!important;
 }
 .el-menu-item a {
+  display: inline-block;
+  width: 100%;
   text-decoration: none;
   color: #999;
 }
 .el-menu-item.is-active a {
   color: #409EFF;
+}
+.el-submenu .el-menu-item {
+  padding: 0 0 0 40px;
 }
 </style>
