@@ -27,8 +27,8 @@ export default {
   data () {
     return {
       items: [
-        {url: "/static/img/login_bg.png",title: '第一张'},
-        {url: "/static/img/login_bg.jpg",title: '第二张'}
+        {url: "../static/img/login_bg.png",title: '第一张'},
+        {url: "../static/img/login_bg.jpg",title: '第二张'}
       ]
     }
   },
