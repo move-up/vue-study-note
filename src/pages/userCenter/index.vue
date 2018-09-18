@@ -3,7 +3,7 @@
   <div class='' ref="div">
     个人中心
     <!-- <el-table ref="table"></el-table> -->
-        <!-- <my-button
+        <my-button
           :disabled="btn.disabled"
           :title="btn.title">
         </my-button>
@@ -44,7 +44,7 @@
             v-model="searchText"
             :errorTipCon="bo.errorTipCon">
             </blog>
-        </div> -->
+        </div>
       <h2>组件InputBox：</h2>
         <input-box
         :label="rlabel"
@@ -52,10 +52,15 @@
         @focus.native="onFocus"
         ></input-box>
         <p>你输入的值：{{ rname }}</p>
+
+        <Input0918
+        :thisValue="todayValue"
+        @input="handleValue"></Input0918>
   </div>
 </template>
 
 <script>
+import Input0918 from './input0918'
 import MyButton from './button'
 import Range from './range'
 import GirlGroup from './girl-group'
@@ -67,6 +72,7 @@ export default {
   name: 'usercenter',
 
   components: {
+    Input0918,
     MyButton,
     Range,
     GirlGroup,
@@ -77,6 +83,7 @@ export default {
 
   data () {
     return {
+      todayValue: '20180918',
       bo: {
         title: '五化',
         errorTipCon: 'Something bad happened.',
@@ -153,6 +160,11 @@ export default {
 
     onEnlargeText:function (enlargeAmount) {
       this.blogFontSize += enlargeAmount
+    },
+
+    handleValue (value) {
+      console.log('parent' + value)
+      this.todayValue = value
     }
   }
 }

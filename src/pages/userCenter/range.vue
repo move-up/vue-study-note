@@ -27,6 +27,11 @@
 export default {
   name: 'range',
 
+  // model: {
+  //   prop: 'value',
+  //   event: 'input'
+  // },
+
   model: {
     prop: '_value',
     event: 'change'
