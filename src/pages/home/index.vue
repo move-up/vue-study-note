@@ -25,7 +25,7 @@
           </router-link>
         </div>
         <div class="item">
-          <router-link to="/userCenter/index" title="五化首页">
+          <router-link to="/userCenter" title="五化首页">
               <div class="date">
                   <span>
                     2018-06-28

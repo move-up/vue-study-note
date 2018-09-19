@@ -1,24 +1,25 @@
 <!-- input -->
 <template>
-  <div class='input0918'>
-    <h2>input 2018-09-18</h2>
-    <input
-    :value="thisValue"
-    @input="handle">
-    {{ thisValue }}
+  <div class='input0919'>
+    <h2>child 2018-09-19</h2>
+    <div
+    @click="clickFun"
+    >{{ msg }}</div>
+    <h2>点击次数： {{ num }}</h2>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Input0918',
+  name: 'Child',
 
   components: {},
 
-  props: ['thisValue'],
+  props: ['msg', 'num'],
 
   data () {
     return {
+
     }
   },
 
@@ -32,8 +33,8 @@ export default {
   mounted () {},
 
   methods: {
-    handle (e) {
-      this.$emit('input', e.target.value)
+    clickFun (val) {
+      this.$emit('handle', val)
     }
   }
 }

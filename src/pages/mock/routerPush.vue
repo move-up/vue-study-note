@@ -33,7 +33,7 @@
             label="操作"
             width="200">
             <template slot-scope="scope">
-              <el-button @click="handleClick(scope.$index, scope.row)" type="text" size="small">查看</el-button>
+              <el-button @click="handleClick(scope.row)" type="text" size="small">查看</el-button>
               <router-link :to="{name: 'detail',params: {userId: scope.row.userId} }">routerLink查看</router-link>
             </template>
           </el-table-column>
@@ -90,8 +90,8 @@ export default {
   },
 
   methods: {
-    handleClick(index, row) {
-       this.$router.push('/routerPush/detail/'+ row.userId);
+    handleClick(row) {
+      this.$router.push('/routerPush/detail/'+ row.userId);
     }
   }
 }

@@ -51,7 +51,7 @@
             items: [
               {
                 icon: 'el-icon-document',
-                path: '/userCenter/index',
+                path: '/userCenter',
                 title: '个人中心'
               },
               {

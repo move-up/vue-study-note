@@ -3,7 +3,7 @@
 <div>
   <input type="text" v-model="_value"
   :max="max"
-  :min="min">
+  :min="min"> {{'_value: ' +  _value }}
   <div
   @click="open"
   class="open-box">{{ msg }}</div>

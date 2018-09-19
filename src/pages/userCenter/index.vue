@@ -56,11 +56,19 @@
         <Input0918
         :thisValue="todayValue"
         @input="handleValue"></Input0918>
+
+        <Input0919
+        :value="mondayValue"
+        @input="handleMondayValue"></Input0919>
+
+        <Child @handle="handleClick" :msg="child.clickMsg" :num="child.num"></Child>
   </div>
 </template>
 
 <script>
 import Input0918 from './input0918'
+import Input0919 from './input0919'
+import Child from './child'
 import MyButton from './button'
 import Range from './range'
 import GirlGroup from './girl-group'
@@ -73,6 +81,8 @@ export default {
 
   components: {
     Input0918,
+    Input0919,
+    Child,
     MyButton,
     Range,
     GirlGroup,
@@ -84,6 +94,11 @@ export default {
   data () {
     return {
       todayValue: '20180918',
+      mondayValue: '20180919',
+      child: {
+        clickMsg: 'This is clickMsg',
+        num: 0
+      },
       bo: {
         title: '五化',
         errorTipCon: 'Something bad happened.',
@@ -104,7 +119,7 @@ export default {
         title: '点击触发',
         disabled: false,
       },
-      //msg: 'ureow',
+      msg: 'ureow',
       b: {
         girls: [
           {
@@ -162,9 +177,17 @@ export default {
       this.blogFontSize += enlargeAmount
     },
 
-    handleValue (value) {
-      console.log('parent' + value)
-      this.todayValue = value
+    handleValue (val) {
+      this.todayValue = val
+    },
+
+    handleMondayValue (val) {
+      this.mondayValue = val
+    },
+
+    handleClick (val) {
+      this.child.num++
+      alert(this.child.clickMsg)
     }
   }
 }

@@ -115,39 +115,41 @@ const menuRouter = [
 //小模板
 const complateRouter = [
   {
-    path: '/userCenter/index',
+    path: '/userCenter',
     component: Main,
-    redirect: '/userCenter/index',
+    redirect: '/userCenter',
     title: '用户中心',
     children: [{
-      path: '/userCenter/index',
-      component: resolve => { require(['@/pages/userCenter/index'], resolve) },
-      name: 'userCenter',
-      meta: { title: '个人信息', icon: 'home', noCache: true }
-    },
-    {
-      path: '/userCenter/changepw',
-      component: resolve => { require(['@/pages/userCenter/changepw'], resolve) },
-      name: 'changepw',
-      meta: { title: '修改密码', icon: 'home', noCache: true }
-    }]
+        path: '/userCenter',
+        component: resolve => { require(['@/pages/userCenter/index'], resolve) },
+        name: 'userCenter',
+        meta: { title: '个人信息', icon: 'home', noCache: true }
+      },
+      {
+        path: 'changepw',
+        component: resolve => { require(['@/pages/userCenter/changepw'], resolve) },
+        name: 'changepw',
+        meta: { title: '修改密码', icon: 'home', noCache: true }
+      }
+    ]
   },
   {
-    path: '/detail',
+    path: '/detail/',
     component: Main,
     title: '商品详情',
     children: [{
-      path: '/detail/fruit',
-      component: resolve => { require(['@/pages/detail/fruit'], resolve) },
-      name: 'fruit',
-      meta: { title: '水果', icon: 'home', noCache: true }
-    },
-    {
-      path: '/detail/vegetable',
-      component: resolve => { require(['@/pages/detail/vegetable'], resolve) },
-      name: 'vegetable',
-      meta: { title: '蔬菜', icon: 'home', noCache: true }
-    }]
+        path: 'fruit',
+        component: resolve => { require(['@/pages/detail/fruit'], resolve) },
+        name: 'fruit',
+        meta: { title: '水果', icon: 'home', noCache: true }
+      },
+      {
+        path: 'vegetable',
+        component: resolve => { require(['@/pages/detail/vegetable'], resolve) },
+        name: 'vegetable',
+        meta: { title: '蔬菜', icon: 'home', noCache: true }
+      }
+    ]
   },
 ]
 //饿了么组件
@@ -161,6 +163,7 @@ const elementRouter = [
       components: {
         default: resolve => { require(['@/pages/pagination/muti'], resolve) }
       },
+      // 命名视图
       children: [
         {
           path: '/muti/mutiPage1',
@@ -174,8 +177,6 @@ const elementRouter = [
           path: '/muti/mutiPage2',
           components: {
             default: Interval,
-            // timeout: Timeout,
-            // interval: Interval
           }
         },
         {

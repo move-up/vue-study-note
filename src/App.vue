@@ -18,7 +18,7 @@ export default {
 // 去找资源
 // 如/static/img/login_bg.png
 // 就为 ../static/img/login_bg.png
-@import './styles/index.scss';
+@import './styles/index';
 
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
