@@ -44,6 +44,8 @@ export const getTableListPage = (params) => {
       // .then(res => res.data)
 };
 
+//
+
 export const getArticleList = (params) => {
   //params是参数对象，qs会对参数对象进行处理
   return axios
@@ -59,9 +61,15 @@ export const getArticleDetail = (params) => {
 };
 
 // 数据是json文件
-// export const getArticleList2 = (params) => {
-//   //params是参数对象，qs会对参数对象进行处理
-//   return axios
-//       .get("/src/api/article.json")    //当文件为json文件时，一定要写绝对地址
-//       .then(res => res.data)
-// };
+export const getArticleList2 = (params) => {
+  //params是参数对象，qs会对参数对象进行处理
+  return axios
+      .get("http://47.94.144.183/api/v1/news", { params })    //当文件为json文件时，一定要写绝对地址
+      .then(res => res.data)
+};
+export const getNewsList = (params) => {
+  //params是参数对象，qs会对参数对象进行处理
+  return axios
+      .get("http://47.94.144.183/api/v1/news", { params })    //当文件为json文件时，一定要写绝对地址
+      .then(res => res.data)
+};

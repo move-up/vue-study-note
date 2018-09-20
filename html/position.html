@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta name="layout" content="main">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>position</title>
+        <style>
+        * {
+        	margin: 0;
+        	padding: 0;
+        }
+        	.static {
+        		position: static;
+        	}
+        	.relative {
+        		position: relative;
+        		width: 100px;
+        		height: 100px;
+        		margin: 10px;
+        		border: 1px solid #ccc;
+        	}
+        	.absolute {
+        		position: absolute;
+        		width: 100px;
+        		height: 100px;
+        		left: 100px;
+        		top: 100px;
+        		margin: 10px;
+        		border: 1px solid #ccc;
+        		background-color: pink;
+        	}
+        	.fixed {
+        		position: fixed;
+        		width: 100px;
+        		height: 100px;
+        		left: 100px;
+        		top: 100px;
+        		margin: 10px;
+        		border: 1px solid #ccc;
+        		background-color: #f90;
+        	}
+        </style>
+    </head>
+    <body>
+        <div class="static">static</div>
+        <div class="relative">
+        	<div class="absolute">absolute</div>
+        	<div class="fixed">fixed</div>
+        </div>
+    </body>
+</html>

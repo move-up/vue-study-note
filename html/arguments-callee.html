@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <meta name="layout" content="main">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>arguments</title>
+    </head>
+    <body>
+        <div id="">
+        <span id="demo"></span>
+        <span id="demo2"></span>
+        现在已经不推荐使用arguments.callee()；
+		原因：访问 arguments 是个很昂贵的操作，因为它是个很大的对象，每次递归调用时都需要重新创建。影响现代浏览器的性能，还会影响闭包。
+		</div>
+        <script>
+			function factorial(num){    
+			   if (num <=1) {         
+			      return 1;     
+			   } else {         
+			   	console.log(arguments.callee.name)
+			   return num * arguments.callee(num-1)     
+			   } 
+			} 
+
+			function show(n) {
+			    var arr = [];
+			    return (function fn() {
+			        arr.unshift(n);
+			        n--;
+			        if (n != 0) {
+			            fn();
+			        }
+			        return arr;
+
+			    })()
+			}
+
+			var a = factorial(5);
+			var demo = document.querySelector('#demo');
+			demo.innerHTML = a;
+
+			var b = show(5);
+			var demo2 = document.querySelector('#demo2');
+			console.log(b);
+			demo2.innerHTML = b;
+        </script>
+    </body>
+</html>

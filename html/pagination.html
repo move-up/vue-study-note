@@ -1,0 +1,160 @@
+<html>
+    <head>
+        <meta name="layout" content="main">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>pagination</title>
+        <style>	
+        	.cp-item {
+        		display: inline-block;
+        	}
+        	table tbody > tr > td,
+        	table thead > tr > td {
+        		width: 15%;
+        		line-height: 30px;
+        		text-align: left;
+        		color: #666;
+        		font-size: 14px;
+        	}
+        </style>
+    </head>
+    <body>
+        <div id="news-list" class="">
+
+        		<table>
+        			<thead class="table-list">
+        				<tr>
+        					<td>num</td>
+        					<td>account</td>
+        					<td>name</td>
+        					<td>mobile</td>
+        					<td>createUser</td>
+        					<td>createTime</td>
+        				</tr>
+        			</thead>
+        			<tbody class="table-list2"></tbody>
+        		</table>
+        	
+        </div>
+		<div  class="c-pages">
+		    <div class="cp-item">
+		        <span>共</span>
+		        <span id="cp-count">0</span>
+		        <span>条</span>
+		    </div>
+		    <div class="cp-item">
+		    	<span>每页</span>
+		        <span id="cp-content">10</span>
+		        <span>条</span>
+		    </div>
+		    <div class="cp-item">
+		        <span id="curr-page">1</span>
+		        <span>/</span>
+		        <span id="total-page">1</span>
+		    </div>
+		    <div class="cp-item">
+		        <button id="home">首页</button>
+		        <button id="prev">上页</button>
+		        <button id="next">下页</button>
+		        <button id="last">尾页</button>
+		    </div>
+		    <!-- <div class="cp-item">
+		        <button id="goTo">转到</button>
+		        <input type="number" id="goToPage" />
+		        <span>页</span>
+		    </div> -->
+		</div>
+        <script src="jquery.min.js"></script>
+        <script>
+        	
+        </script>
+        <script>
+		    $.ajax({
+		        type: "get",
+		        url:"https://www.easy-mock.com/mock/5a168608b38a3c5b4c7a7163/example/frontPage",
+		        dataType: "json",
+		        success:function(data) {
+		            $.each(data.data, function(i, json){
+
+		            	var dataTotal = data.total;
+		            	var pageTotal = Math.ceil(dataTotal / 10);
+		            	//总页数
+		            	$('#cp-count').text(dataTotal);
+		            	//共有几页
+		            	$('#total-page').text(pageTotal);
+
+		            	//初始化，首页为第一页
+		            	ajaxData(1);
+
+		            	// 第一页
+		            	$(document).on('click', '#home', function(){
+		            		ajaxData(1);
+		            		$('#curr-page').text(1)
+		            	});
+
+		            	// 最后一页
+		            	$(document).on('click', '#last', function(){
+		            		ajaxData(pageTotal);
+		            		$('#curr-page').text(pageTotal)
+		            	});
+
+		            	function ajaxData(num) {
+
+		            		$('.table-list2').html('');
+		            		setTimeout(function(){
+			            		if(i >= (num*10 - 9) && i <= num*10){
+			            			$('.table-list2').append(`<tr>
+					            		<td> ${i} </td>
+					            		<td> ${json.account} </td>
+					            		<td> ${json.name} </td>
+					            		<td> ${json.mobile} </td>
+					            		<td> ${json.createUser} </td>
+					            		<td> ${json.createTime} </td>
+					            		</tr>`);
+			            		}
+		            		},1)
+
+		            	}
+
+		            	// 上一页
+		            	$(document).on('click', '#prev', function(){
+		            		var currPage = $('#curr-page').text();
+		            		currPage = Number(currPage) -1;
+		            		setTimeout(function(){
+			            		if(currPage >= 1) {
+			            			ajaxData(currPage);
+			            			$('#curr-page').text(currPage)
+			            		} 
+			            		else {
+			            			console.log('主人，已经是第一页了！');
+			            		}
+		            		}, 1)
+		            	});
+
+		            	// 下一页
+		            	$(document).on('click', '#next', function(){
+		            		var currPage = $('#curr-page').text();
+		            		currPage = Number(currPage) + 1;
+		            		setTimeout(function(){
+			            		if(currPage <= pageTotal) {
+			            			ajaxData(currPage);
+			            			$('#curr-page').text(currPage)
+			            		} 
+			            		else {
+			            			console.log('主人，已经是最后一页了！');
+			            		}
+		            		}, 1)
+		            	});
+
+
+		            });
+		            
+		        },
+		        error:function(error){
+		            console.log(error);
+		        }
+		    });
+
+
+        </script>
+    </body>
+</html>

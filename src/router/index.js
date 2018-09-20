@@ -167,6 +167,8 @@ const elementRouter = [
       children: [
         {
           path: '/muti/mutiPage1',
+          name: 'muti',
+          title: 'router-view命名视图',
           components: {
             default: Timeout,
             timeout: Timeout,
@@ -187,21 +189,7 @@ const elementRouter = [
             interval: Interval
           }
         },
-        {
-          path: '/carousel',
-          component: resolve => { require(['@/pages/carousel/index'], resolve) },
-          name: 'carousel',
-          title: '轮播'
-        },
-        {
-          path: '/pagination',
-          component: resolve => { require(['@/pages/pagination/index'], resolve) },
-          name: 'pagination',
-          title: '分页'
-        },
       ],
-      name: 'muti',
-      title: 'router-view命名视图'
     },
     {
       path: '/element',
@@ -238,6 +226,24 @@ const elementRouter = [
       component: resolve => { require(['@/pages/element/collapse'], resolve) },
       name: 'tree',
       title: '折叠面板'
+    },
+    {
+      path: '/carousel',
+      component: resolve => { require(['@/pages/carousel/index'], resolve) },
+      name: 'carousel',
+      title: '轮播'
+    },
+    {
+      path: '/pagination',
+      component: resolve => { require(['@/pages/pagination/index'], resolve) },
+      name: 'pagination',
+      title: '分页'
+    },
+    {
+      path: '/pagination2',
+      component: resolve => { require(['@/pages/pagination/pagination-demo'], resolve) },
+      name: 'pagination2',
+      title: '分页'
     },
   ]}
 ]
