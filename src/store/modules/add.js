@@ -1,15 +1,19 @@
 
-import axios from 'axios'
+import Cookies from 'js-cookie'
 import { getAddLength } from '@/api/api'
 let p = {}
 
 export default {
   state: {
-    count: 10000
+    count: Cookies.get('count')
+    ? JSON.parse(Cookies.get('count'))
+    : 10000,
   },
   mutations: {
     add (state, n) {
       state.count += Number(n)
+      const expires = new Date(new Date().getTime() + 7 * 24 * 60 * 60 * 1000); // 过期时间7天
+      Cookies.set('count', JSON.stringify(n), { expires })
     }
   },
   actions: {

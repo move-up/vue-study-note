@@ -13,6 +13,9 @@
         <el-form-item label="用户名" prop="name">
           <el-input v-model="user.name" placeholder="请输入用户名"></el-input>
         </el-form-item>
+        <el-form-item label="昵称" prop="nickname">
+          <el-input v-model="nickname" auto-complete="off"></el-input>
+        </el-form-item>
         <el-form-item label="密码" prop="pw">
           <el-input type="password" v-model="user.pw" placeholder="请输入密码"></el-input>
         </el-form-item>
@@ -29,6 +32,7 @@
   import { USER_SIGNIN } from '@/store/modules/user'
   import Cookies from 'js-cookie'
   import { Loading } from 'element-ui'
+  import StoreUser from '@/localStorage/user'
 
   export default {
     data () {
@@ -37,9 +41,14 @@
           name: '',
           pw: ''
         },
+        nickname: '',
         rules: {
           name: [
             { required: true, message: '请输入用户名', trigger: 'blur' },
+            { min: 5, max: 20, message: '长度在 5 到 20 个字符', trigger: 'blur' }
+          ],
+          nickname: [
+            { required: false, message: '请输入呢称', trigger: 'blur' },
             { min: 5, max: 20, message: '长度在 5 到 20 个字符', trigger: 'blur' }
           ],
           pw: [
@@ -48,6 +57,14 @@
             { pattern: /[a-zA-Z0-9:',_!();\.\?\-\+，。；：‘’（）@！？]+/, message: '输入内容只能是数字，字母与特殊符号！', trigger: 'blur'}
           ]
         }
+      }
+    },
+    watch: {
+      nickname: {
+        handler (nickname) {
+          StoreUser.save(nickname)
+        },
+        deep: true
       }
     },
     methods: {
@@ -75,7 +92,7 @@
     margin: 250px 0;
     margin-right: 40px;
     width: 480px;
-    height: 264px;
+    height: 320px;
   }
 
   .page-login {

@@ -22,6 +22,12 @@
             </el-dropdown-item>
           </a>
           <el-dropdown-item divided>
+            <!-- 用户昵称 -->
+            <span @click.stop>{{ nickname }}</span>
+            <el-input v-model="nickname" ref="nickname" :class="{'writing-input': isTrue,'nickname': !isTrue}" @click.native.stop @blur="changeState">
+              <i slot="suffix" class="el-input__icon el-icon-edit" @click="doThis"></i>
+            </el-input>
+            <el-input v-model="nickname" class="nickname" placeholder="" @click.native.stop></el-input>
             <span @click="logout" style="display:block;">登出</span>
           </el-dropdown-item>
         </el-dropdown-menu>
@@ -33,6 +39,7 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 import { USER_SIGNOUT } from '@/store/modules/user'
+import StoreUser from '@/localStorage/user'
 
 export default {
   name: '',
@@ -43,6 +50,8 @@ export default {
 
   data () {
     return {
+      nickname: StoreUser.fetch(),
+      isTrue: false,
     }
   },
 
@@ -50,7 +59,14 @@ export default {
     ...mapGetters(['userName'])
   },
 
-  watch: {},
+  watch: {
+    nickname: {
+      handler (nickname) {
+        StoreUser.save(nickname)
+      },
+      deep: true
+    }
+  },
 
   created () {},
 
@@ -61,6 +77,13 @@ export default {
       this.USER_SIGNOUT().then(() => {
         location.reload()// In order to re-instantiate the vue-router object to avoid bugs
       })
+    },
+    doThis () {
+      this.isTrue = true
+    },
+    changeState () {
+      console.log(111)
+      this.isTrue = false
     }
   }
 }
@@ -143,3 +166,12 @@ $border: 1px solid #f90;
   }
 }
 </style>
+<style>
+.nickname .el-input__inner {
+  border: 1px solid transparent;
+}
+.writing-input .el-input__inner {
+  border: 1px solid #f90;
+}
+</style>
+
