@@ -4,6 +4,7 @@
   <div>
       <div class='typeof'>
         <h1>请求数据</h1>
+        <button @scroll.passive="onScroll">scroll</button>
         <el-table
           ref="articleList"
           type="index"
@@ -64,7 +65,8 @@ export default {
       detail: {
         data: [],
         show: false
-      }
+      },
+      a: 'hello'
     }
   },
 
@@ -76,6 +78,7 @@ export default {
 
   // vue实例创建时触发
   created: function() {
+    console.log('this created:' + this.a)
     //3
     // 页面初始化请求的数据
     let p2 = {
@@ -86,13 +89,21 @@ export default {
     })
   },
 
-  mounted () {
+  mounted: function () {
+    console.log('this mounted:' + this.a)
   },
 
   methods: {
     handleClick(row) {
       this.$router.push('/routerPush/detail/'+ row.userId);
+    },
+    onScroll () {
+      console.log('scroll')
     }
+  },
+
+  destroyed: function(){
+    console.log('this destroyed:' + this.a)
   }
 }
 </script>
