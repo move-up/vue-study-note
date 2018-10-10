@@ -15,7 +15,8 @@
           </router-link>
         </div>
         <div class="item">
-          <router-link to="/todolist" title="todolist">
+          <!-- <router-link to="/todolist" title="todolist"> -->
+          <router-link :to="{name: 'todolist'}" title="todolist">
               <div class="date">
                   <span>
                     2018-04-17

@@ -59,6 +59,7 @@ const menuRouter = [
       path: '/typeof',
       component: resolve => { require(['@/pages/typeof/index'], resolve) },
       name: 'typeof',
+      // redirect: { name: 'upload' },//重定向
       title: '判断数据类型'
     },
     {
@@ -161,7 +162,9 @@ const elementRouter = [
     {
       path: '/muti',
       components: {
-        default: resolve => { require(['@/pages/pagination/muti'], resolve) }
+        default: resolve => { require(['@/pages/pagination/muti'], resolve) },
+        timeout: Timeout,
+        interval: Interval
       },
       // 命名视图
       children: [
@@ -172,13 +175,14 @@ const elementRouter = [
           components: {
             default: Timeout,
             timeout: Timeout,
-            interval: Interval
+            // interval: Interval
           }
         },
         {
           path: '/muti/mutiPage2',
           components: {
             default: Interval,
+            interval: Interval
           }
         },
         {
@@ -309,7 +313,3 @@ router.beforeEach(({ meta, path, name }, from, next) => {
 
 // 4. 导出路由
 export default router
-
-/*router.beforeEach((to,from,next) =>{ //路由跳转之前的拦截 to:将要跳转去的route; from:从该route跳转；next: 继续跳转
-  console.log(to)
-})*/

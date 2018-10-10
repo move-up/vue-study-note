@@ -95,7 +95,8 @@ export default {
 
   methods: {
     handleClick(row) {
-      this.$router.push('/routerPush/detail/'+ row.userId);
+      // this.$router.push('/routerPush/detail/'+ row.userId);
+      this.$router.push({name: 'detail', params: { userId: row.userId } });
     },
     onScroll () {
       console.log('scroll')

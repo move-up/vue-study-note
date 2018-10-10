@@ -1,7 +1,7 @@
 <!-- 判断数据类型 -->
 <template>
   <div class='typeof'>
-      带参请求数据 userId: {{ this.$route.params.userId }}
+    带参请求数据 userId: {{ this.$route.params.userId }}
     <ul v-for="(article, index) in articleDetail" :key="index">
       <li class="article-title">{{ index + 1 }} title: {{ article.title }} <span class="article-id">id: {{ article.id }}</span></li>
       <li class="article-body">body: {{ article.body }}</li>
