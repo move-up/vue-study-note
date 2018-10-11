@@ -26,10 +26,14 @@
         </tr>
       </tbody>
     </table>
+    <!-- <div class="show-d">oldList : &nbsp; {{ oldList }}</div>
+    <div class="show-d">newList : {{ newList }}</div> -->
   </div>
 </template>
 
 <script>
+import Sortable from 'sortablejs'
+
 export default {
   name: '',
 
@@ -72,7 +76,10 @@ export default {
           hobby: '唱歌',
           show: true
         }
-      ]
+      ],
+      sortable: null,
+      oldList: [],
+      newList: []
     }
   },
 
@@ -80,11 +87,20 @@ export default {
 
   watch: {},
 
-  created () {},
+  created () {
+    this.addData()
+  },
 
   mounted () {},
 
   methods: {
+    addData () {
+      this.oldList = this.humans.map(v => v.num)
+      this.newList = this.oldList.slice()
+      this.$nextTick(() => {
+        this.setSort()
+      })
+    },
     handleAddLine () {
       let newNum = this.humans.length - 1
       this.humans[newNum].show = false
@@ -111,6 +127,22 @@ export default {
       } else {
         confirm("主人只剩下最后一行了，不可再删了！")
       }
+    },
+    setSort() {
+      const el = document.querySelectorAll('table > tbody')[0]
+      this.sortable = Sortable.create(el, {
+        ghostClass: 'sortable-ghost',
+        setData: function(dataTransfer) {
+          dataTransfer.setData('Text', '')
+        },
+        onEnd: evt => {
+          // const targetRow = this.humans.splice(evt.oldIndex, 1)[0]
+          // this.humans.splice(evt.newIndex, 0, targetRow)
+
+          // const tempIndex = this.newList.splice(evt.oldIndex, 1)[0]
+          // this.newList.splice(evt.newIndex, 0, tempIndex)
+        }
+      })
     }
   }
 }

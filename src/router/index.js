@@ -98,6 +98,12 @@ const menuRouter = [
       name: 'tableMuti',
       title: '表格'
     },
+    {
+      path: '/dragTable',
+      component: resolve => { require(['@/pages/tableEdite/dragTable'], resolve) },
+      name: 'dragTable',
+      title: '拖拽表格'
+    },
     ]
   },
   {
