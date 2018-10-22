@@ -1,33 +1,33 @@
-<!--  -->
+<!-- 编辑表格 -->
 <template>
-  <tbody>
+  <tbody class="body-pro">
     <tr v-for="(col, index) in cols" :key="index">
       <td
         v-for="(opt, key, _index) in col"
         :rowspan="(index === 0 && _index === 0) ? cols.length : 1"
-        :key="_index">
+        :key="_index" :width="opt.width">
         <el-input v-if="opt.type === 'input'" v-model="opt.value" :name="String(id) + (index + 1) + key"></el-input>
-        <el-checkbox v-else-if="opt.type === 'checkbox'" v-model="opt.value" :name="`${String(id) + (index + 1) + key}`"></el-checkbox>
-        <el-button v-if="(index === 0 && _index === 0 && canAdd)" type="primary" icon="el-icon-circle-plus-outline" @click="$emit('add')">添加</el-button>
+        <el-checkbox v-else-if="opt.type === 'checkbox'" :label="opt.value" :name="`${String(id) + (index + 1) + key}`"></el-checkbox>
+        <el-button v-if="(index === 0 && _index === 0 && canAdd)" type="primary" icon="el-icon-circle-plus-outline" @click="$emit('add')" title="添加多行"></el-button>
         <template v-else>
           {{ opt.value }}
         </template>
       </td>
-      <td>
+      <td width="8%">
         <!-- 只有一行 -->
         <template v-if="index === 0 && cols.length === 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="false" @click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="false" @click="deleteOneLine(index)" title="删除一行"></el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine" title="添加一行"></el-button>
         </template>
         <!-- 中间行数 -->
         <template v-else-if="index > 0 && index !== cols.length - 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  @click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)" title="删除一行"></el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="false"  @click="handleAddLine" title="添加一行"></el-button>
         </template>
         <!-- 最后一行 -->
         <template v-else-if="index > 0 && index === cols.length - 1">
-          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)">删除</el-button>
-          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine">添加</el-button>
+          <el-button type="danger" icon="el-icon-remove-outline" v-show="true" @click="deleteOneLine(index)" title="删除一行"></el-button>
+          <el-button type="primary" icon="el-icon-circle-plus-outline" v-show="true"  @click="handleAddLine" title="添加一行"></el-button>
         </template>
       </td>
     </tr>
@@ -138,8 +138,6 @@ export default {
       if(this.cols.length > 1) {
         var r = confirm("确定删除？")
         if(r == true && this.cols.length == i + 1) {
-          // this.cols[i - 1].col.colsAddShow = true
-          // console.log(this.cols[i - 1])
           this.cols.splice(i, 1)
         } else {
           this.cols.splice(i, 1)
@@ -152,5 +150,5 @@ export default {
 }
 </script>
 
-<style lang='scss' scoped>
+<style lang='scss'>
 </style>

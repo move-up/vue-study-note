@@ -95,6 +95,7 @@ export default {
 
   methods: {
     handleFetchData (res) {
+      console.log(res.data)
       this.table.data = res.data
       this.table.total = Number(res.count)
     },

@@ -214,7 +214,7 @@
         <table class="text-center">
           <tbody>
             <tr>
-              <td colspan="2">项目推进计划</td>
+              <td colspan="2" rowspan="2">项目推进计划</td>
               <td colspan="3">一季度</td>
               <td colspan="3">二季度</td>
               <td colspan="3">三季度</td>
@@ -257,66 +257,79 @@ export default {
         {
           one: {
             value: '',
-            type: 'input'
+            type: 'input',
+            width: '15%'
           },
           two: {
             value: '',
-            type: 'input'
+            type: 'input',
+            width: '15%'
           },
           three: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           four: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           five: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           six: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           seven: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           eight: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           ten: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           oneOne: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           oneTwo: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           oneThree: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           oneFour: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           oneFive: {
             value: '',
-            type: 'checkbox'
+            type: 'checkbox',
+            width: '4%'
           },
           num: {
             value: 1,
-            type: 'text'
+            type: 'text',
+            width: '12%'
           },
-          // colsAddShow: false,
-          // colsDeleteShow: false,
         },
         {
           two: {
@@ -460,4 +473,43 @@ export default {
 </script>
 
 <style lang='scss'>
+.body-pro .el-checkbox,
+.body-pro .el-checkbox__input,
+.body-pro .el-checkbox__inner {
+  display: block;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  width: 100%;
+  height: 25px;
+}
+table tbody.body-pro > tr > td {
+  padding: 1px;
+  position: relative!important;
+}
+table tbody.body-pro > tr > td .el-input__inner {
+  border: 0;
+  padding: 0 3px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+}
+table tbody.body-pro > tr > td .el-checkbox__inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid transparent;
+}
+tbody.body-pro .el-checkbox__inner::after {
+  width: 6px;
+  height: 14px;
+  left: 13px;
+}
+table tbody.body-pro > tr td .el-button {
+  padding: 5px 10px;
+  font-size: 12px;
+  margin: 1px 0 0 1px;
+}
 </style>
