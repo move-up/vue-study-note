@@ -16,6 +16,9 @@
         prop="date"
         label="日期"
         width="180">
+        <template slot-scope="scope">
+          <span class="date">{{ scope.row.date }}</span>
+        </template>
       </el-table-column>
       <el-table-column
         prop="name"
