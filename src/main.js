@@ -13,12 +13,20 @@ import iView from 'iview';
 import locale from 'iview/dist/locale/en-US';
 import 'iview/dist/styles/iview.css'
 
+// import * as filters from './filters' // global filters
+
 window._ = _
 
 //import ECharts from 'vue-echarts/components/ECharts'
 
 Vue.use(Element)
 Vue.use(iView, { locale });
+
+
+// register global utility filters.
+// Object.keys(filters).forEach(key => {
+//   Vue.filter(key, filters[key])
+// })
 
 //Vue.component('chart', ECharts)
 

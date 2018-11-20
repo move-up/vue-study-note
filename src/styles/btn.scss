@@ -1,0 +1,42 @@
+.btn-yellow {
+  background-color: $color-warning;
+}
+.btn-pan {
+  font-size: 14px;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 8px;
+  border: none;
+  transition: 600ms ease all;
+  position: relative;
+  display: inline-block;
+  outline: 0;
+  &:hover {
+    background-color: #fff;
+    color: $color-warning;
+    &:before,
+    &:after {
+      width: 100%;
+      border-radius: 0;
+      background-color: $color-warning;
+      transition: 600ms ease all;
+    }
+  }
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 2px;
+    width: 0;
+    transition: 400ms ease all
+  }
+  &:after {
+    top: inherit;
+    right: inherit;
+    left: 0;
+    bottom: 0;
+  }
+}

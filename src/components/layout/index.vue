@@ -3,7 +3,7 @@
   <div class='layout'>
     <div class="main-container">
       <navbar></navbar>
-      <el-container style="height:900px;">
+      <el-container>
         <el-aside width="200px">
           <sidebar class="sidebar-container"></sidebar>
         </el-aside>

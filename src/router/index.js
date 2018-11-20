@@ -104,6 +104,18 @@ const menuRouter = [
       name: 'dragTable',
       title: '拖拽表格'
     },
+    {
+      path: '/draggable',
+      component: resolve => { require(['@/pages/draggable/index'], resolve) },
+      name: 'draggable',
+      title: '拖拽'
+    },
+    {
+      path: '/backToTop',
+      component: resolve => { require(['@/pages/backToTop/index'], resolve) },
+      name: 'backToTop',
+      title: '拖拽'
+    },
     ]
   },
   {
@@ -117,6 +129,12 @@ const menuRouter = [
     name: 'todolist2',
     component: resolve => { require(['@/pages/todolist/todolist2'], resolve) },
     title: 'todolist2'
+  },
+  {
+    path: '/todo',
+    name: 'todo',
+    component: resolve => { require(['@/pages/todolist/todo/index'], resolve) },
+    title: 'todo'
   },
 ]
 //小模板
