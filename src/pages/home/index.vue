@@ -115,6 +115,26 @@
               table表格
           </router-link>
         </div>
+        <div class="item">
+          <router-link to="/draggable" title="draggable">
+              <div class="date">
+                  <span>
+                    2018-11-20
+                  </span>
+              </div>
+              拖拽
+          </router-link>
+        </div>
+        <div class="item">
+          <router-link to="/backToTop" title="backToTop">
+              <div class="date">
+                  <span>
+                    2018-11-20
+                  </span>
+              </div>
+              回到顶部
+          </router-link>
+        </div>
       </div>
     </div>
 
