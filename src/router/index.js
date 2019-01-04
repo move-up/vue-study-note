@@ -8,6 +8,7 @@ import Cookies from 'js-cookie'
 // 1. 定义（路由）组件，可以从其他文件import进来
 import Layout from '@/components/Layout'
 import Main from '@/components/main'
+import testParent from '@/pages/test/index'
 
 // 路由切割1
 const Home = () => import('@/pages/home/index')
@@ -37,6 +38,22 @@ const defaultRouter = [
       name: 'store-add',
       component: resolve => { require(['@/pages/login/add'], resolve) }
     }
+]
+
+//动态路由匹配
+const testRouter = [
+  {
+    path: '/user/:id',
+    component: testParent,
+    children: [
+      {
+        path: '/user/:id',
+        name: 'user',
+        component: resolve => { require(['@/pages/test/user'], resolve) }
+      }
+    ]
+
+  },
 ]
 
 const menuRouter = [
@@ -318,7 +335,7 @@ const apiRouter = [
 // 3. 创建router实例，然后传`routes`配置
 const router =  new Router({
   // mode: 'history',
-  routes: [...defaultRouter, ...menuRouter, ...complateRouter, ...elementRouter, ...apiRouter]
+  routes: [...defaultRouter, ...menuRouter, ...complateRouter, ...elementRouter, ...apiRouter, ...testRouter]
 })
 
 // 路由拦截
