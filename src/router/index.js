@@ -176,7 +176,7 @@ const complateRouter = [
     ]
   },
   {
-    path: '/detail/',
+    path: '/detail',
     component: Main,
     title: '商品详情',
     children: [{
@@ -351,6 +351,7 @@ const apiRouter = [
 // 3. 创建router实例，然后传`routes`配置
 const router =  new Router({
   // mode: 'history',
+  linkActiveClass: 'active',
   routes: [...defaultRouter, ...menuRouter, ...complateRouter, ...elementRouter, ...apiRouter, ...testRouter]
 })
 

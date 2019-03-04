@@ -23,13 +23,13 @@ export default {
   },
   computed: {
     msgComputed: function() {
-      return 'computed:' + this.msg + arr;
+      return 'computed:' + this.msg + this.a;
     }
   },
   watch: {
     msg: function(val, val2) {
-      console.log('watchOld:' + val + arr);
-      console.log('watchNew:' + val2 + arr);
+      console.log('watchOld:' + val + this.a);
+      console.log('watchNew:' + val2 + this.a);
     }
   },
   methods: {}

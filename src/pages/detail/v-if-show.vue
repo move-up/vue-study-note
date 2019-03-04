@@ -18,8 +18,10 @@
       </li>
     </ul>
     <button @click="add">添加一行</button>
+
     <ul>
-      <li v-for="(newItem,i) in newList" :key="i">名字：{{ newItem.name }}， 年龄：{{newItem.age}}</li>
+      <h2>localStorage中存储的数据如下：</h2>
+      <li v-for="(newItem,i) in newList" :key="i"><span>名字：{{ newItem.name }}，</span><span v-show="newItem.age == 25">年龄：{{newItem.age}}</span></li>
     </ul>
 </div>
 </template>
