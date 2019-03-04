@@ -173,6 +173,16 @@ const complateRouter = [
         component: resolve => { require(['@/pages/detail/vegetable'], resolve) },
         name: 'vegetable',
         meta: { title: '蔬菜', icon: 'home', noCache: true }
+      },
+      {
+        path: 'watch-computed',
+        component: resolve => { require(['@/pages/detail/watch-computed'], resolve) },
+        name: 'watchComputed'
+      },
+      {
+        path: 'vShow',
+        component: resolve => { require(['@/pages/detail/v-if-show'], resolve) },
+        name: 'vShow'
       }
     ]
   },
@@ -272,6 +282,12 @@ const elementRouter = [
       component: resolve => { require(['@/pages/pagination/pagination-demo'], resolve) },
       name: 'pagination2',
       title: '分页'
+    },
+    {
+      path: '/scrollPane',
+      component: resolve => { require(['@/pages/scrollPane/index'], resolve) },
+      name: 'scrollPane',
+      title: '滚轮'
     },
   ]}
 ]

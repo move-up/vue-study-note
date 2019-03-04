@@ -117,6 +117,11 @@ export default {
               path: '/upload',
               title: '上传'
             },
+            {
+              icon: 'el-icon-document',
+              path: '/scrollPane',
+              title: '滚轮滚动'
+            },
           ]
         },
         {
