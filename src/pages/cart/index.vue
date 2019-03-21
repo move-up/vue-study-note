@@ -15,8 +15,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, index) in productList"
-        :key="index">
+        <tr v-for="(item, index) in filerProduct"
+        :key="index"
+        v-bind:class="{'selected': index == currentIndex}"
+        @click="currentIndex=index">
           <td>
             <div class="cursor wxz"
             :class="{'check': item.isCheck}"
@@ -45,8 +47,13 @@
       </tbody>
       <tbody>
         <tr>
+          <td colspan="8" class="text-center">
+            <div class="cursor"><span class="red" @click="doLoadMore">more</span></div>
+          </td>
+        </tr>
+        <tr>
           <td>
-            <div class="cursor">
+            <div class="cursor" @click.stop="test()">
               <span class="zx"
               :class="{'check': checkAllFlag}"
               @click="checkAll(true)">全选</span>
@@ -54,8 +61,8 @@
               @click="checkAll(false)">取消全选</span>
             </div>
           </td>
-          <td colspan="6">
-            <div class="text-right">
+          <td colspan="7">
+            <div class="ta-r">
               <h3>结算:</h3>
               <span>总金额：{{ totalMoney }}</span>
             </div>
@@ -63,6 +70,7 @@
         </tr>
       </tbody>
     </table>
+    <div v-dir1></div>
   </div>
 </template>
 
@@ -82,7 +90,9 @@ export default {
       checkAllFlag: false,
       totalMoney: 0,
       delFlag: false,
-      curProduct: ''
+      curProduct: '',
+      limitNum: 1,
+      currentIndex: 0
     }
   },
   filters: {
@@ -90,8 +100,26 @@ export default {
       return '￥' + val.toFixed(2) + type;
     }
   },
+  directives: {
+      // 指令名称
+      dir1: {
+          inserted(el) {
+              // 指令中第一个参数是当前使用指令的DOM
+              console.log(el);
+              console.log(arguments);
+              // 对DOM进行操作
+              el.style.width = '200px';
+              el.style.height = '200px';
+              el.style.background = '#f90';
+          }
+      }
+  },
 
-  computed: {},
+  computed: {
+    filerProduct () {
+      return this.productList.slice(0,this.limitNum)
+    }
+  },
 
   watch: {},
 
@@ -103,6 +131,9 @@ export default {
   },
 
   methods: {
+    test () {
+      alert(1);
+    },
     changeQuentity: function(val,act){
       if(act > 0){
         val.productQuentity++
@@ -159,6 +190,9 @@ export default {
       var index = this.productList.indexOf(this.curProduct)
       this.productList.splice(index, 1)
     },
+    doLoadMore: function(){
+      this.limitNum = this.productList.length
+    },
     cartView: function(){
       // axios.get('../../../cartData.json', {"id": 123}).then(
       //   res => {
@@ -167,6 +201,7 @@ export default {
       //   }
       // )
     },
+
     delModal () {
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
           confirmButtonText: '确定',
@@ -201,6 +236,9 @@ td {
   line-height: 25px;
   border: 1px solid #eee;
   text-align: center;
+}
+tr.selected td {
+  border-color: #f90;
 }
 .quentity {
   width: 20px;
