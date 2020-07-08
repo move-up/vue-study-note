@@ -5,7 +5,7 @@
         slot="header"
         class="clearfix"
       >
-        <span>登录</span>
+        <span>登录master</span>
       </div>
       <el-form
         ref="form"
